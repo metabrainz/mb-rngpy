@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #
-# Generated Thu May 28 19:12:45 2015 by generateDS.py version 2.14a.
+# Generated Tue Jun  6 14:50:50 2017 by generateDS.py version 2.26a.
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -21,62 +21,16 @@
 #
 
 import sys
+from lxml import etree as etree_
 
 import mb as supermod
 
-etree_ = None
-Verbose_import_ = False
-(
-    XMLParser_import_none, XMLParser_import_lxml,
-    XMLParser_import_elementtree
-) = range(3)
-XMLParser_import_library = None
-try:
-    # lxml
-    from lxml import etree as etree_
-    XMLParser_import_library = XMLParser_import_lxml
-    if Verbose_import_:
-        print("running with lxml.etree")
-except ImportError:
-    try:
-        # cElementTree from Python 2.5+
-        import xml.etree.cElementTree as etree_
-        XMLParser_import_library = XMLParser_import_elementtree
-        if Verbose_import_:
-            print("running with cElementTree on Python 2.5+")
-    except ImportError:
-        try:
-            # ElementTree from Python 2.5+
-            import xml.etree.ElementTree as etree_
-            XMLParser_import_library = XMLParser_import_elementtree
-            if Verbose_import_:
-                print("running with ElementTree on Python 2.5+")
-        except ImportError:
-            try:
-                # normal cElementTree install
-                import cElementTree as etree_
-                XMLParser_import_library = XMLParser_import_elementtree
-                if Verbose_import_:
-                    print("running with cElementTree")
-            except ImportError:
-                try:
-                    # normal ElementTree install
-                    import elementtree.ElementTree as etree_
-                    XMLParser_import_library = XMLParser_import_elementtree
-                    if Verbose_import_:
-                        print("running with ElementTree")
-                except ImportError:
-                    raise ImportError(
-                        "Failed to import ElementTree from any known place")
-
-
-def parsexml_(*args, **kwargs):
-    if (XMLParser_import_library == XMLParser_import_lxml and
-            'parser' not in kwargs):
+def parsexml_(infile, parser=None, **kwargs):
+    if parser is None:
         # Use the lxml ElementTree compatible parser so that, e.g.,
         #   we ignore comments.
-        kwargs['parser'] = etree_.ETCompatXMLParser()
-    doc = etree_.parse(*args, **kwargs)
+        parser = etree_.ETCompatXMLParser()
+    doc = etree_.parse(infile, parser=parser, **kwargs)
     return doc
 
 #
@@ -90,18 +44,39 @@ ExternalEncoding = 'utf-8'
 #
 
 
+class def_area_element_innerSub(supermod.def_area_element_inner):
+    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, disambiguation=None, iso_3166_1_code_list=None, iso_3166_2_code_list=None, iso_3166_3_code_list=None, annotation=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, anytypeobjs_=None):
+        super(def_area_element_innerSub, self).__init__(id, type_, type_id, name, sort_name, disambiguation, iso_3166_1_code_list, iso_3166_2_code_list, iso_3166_3_code_list, annotation, life_span, alias_list, relation_list, tag_list, user_tag_list, anytypeobjs_, )
+supermod.def_area_element_inner.subclass = def_area_element_innerSub
+# end class def_area_element_innerSub
+
+
+class def_track_dataSub(supermod.def_track_data):
+    def __init__(self, id=None, position=None, number=None, title=None, length=None, artist_credit=None, recording=None):
+        super(def_track_dataSub, self).__init__(id, position, number, title, length, artist_credit, recording, )
+supermod.def_track_data.subclass = def_track_dataSub
+# end class def_track_dataSub
+
+
 class metadataSub(supermod.metadata):
-    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, url=None, puid=None, isrc=None, disc=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, collection_list=None, editor_list=None, entity_list=None, anytypeobjs_=None):
-        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, url, puid, isrc, disc, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, collection_list, editor_list, entity_list, anytypeobjs_, )
+    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, url=None, puid=None, isrc=None, disc=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None):
+        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, url, puid, isrc, disc, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, collection_list, editor_list, entity_list, def_extension_element, )
 supermod.metadata.subclass = metadataSub
 # end class metadataSub
 
 
 class artistSub(supermod.artist):
-    def __init__(self, type_=None, id=None, name=None, sort_name=None, gender=None, country=None, area=None, begin_area=None, end_area=None, annotation=None, disambiguation=None, ipi=None, ipi_list=None, life_span=None, alias_list=None, recording_list=None, release_list=None, release_group_list=None, label_list=None, work_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(artistSub, self).__init__(type_, id, name, sort_name, gender, country, area, begin_area, end_area, annotation, disambiguation, ipi, ipi_list, life_span, alias_list, recording_list, release_list, release_group_list, label_list, work_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, gender=None, country=None, area=None, begin_area=None, end_area=None, annotation=None, disambiguation=None, ipi=None, ipi_list=None, life_span=None, alias_list=None, recording_list=None, release_list=None, release_group_list=None, label_list=None, work_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(artistSub, self).__init__(id, type_, type_id, name, sort_name, gender, country, area, begin_area, end_area, annotation, disambiguation, ipi, ipi_list, life_span, alias_list, recording_list, release_list, release_group_list, label_list, work_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.artist.subclass = artistSub
 # end class artistSub
+
+
+class genderSub(supermod.gender):
+    def __init__(self, id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(genderSub, self).__init__(id, valueOf_, mixedclass_, content_, )
+supermod.gender.subclass = genderSub
+# end class genderSub
 
 
 class life_spanSub(supermod.life_span):
@@ -118,6 +93,13 @@ supermod.release.subclass = releaseSub
 # end class releaseSub
 
 
+class statusSub(supermod.status):
+    def __init__(self, id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(statusSub, self).__init__(id, valueOf_, mixedclass_, content_, )
+supermod.status.subclass = statusSub
+# end class statusSub
+
+
 class text_representationSub(supermod.text_representation):
     def __init__(self, language=None, script=None):
         super(text_representationSub, self).__init__(language, script, )
@@ -126,10 +108,17 @@ supermod.text_representation.subclass = text_representationSub
 
 
 class release_groupSub(supermod.release_group):
-    def __init__(self, type_=None, id=None, title=None, annotation=None, disambiguation=None, first_release_date=None, primary_type=None, secondary_type_list=None, artist_credit=None, release_list=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(release_groupSub, self).__init__(type_, id, title, annotation, disambiguation, first_release_date, primary_type, secondary_type_list, artist_credit, release_list, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, title=None, annotation=None, disambiguation=None, first_release_date=None, primary_type=None, secondary_type_list=None, artist_credit=None, release_list=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(release_groupSub, self).__init__(id, type_, type_id, title, annotation, disambiguation, first_release_date, primary_type, secondary_type_list, artist_credit, release_list, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.release_group.subclass = release_groupSub
 # end class release_groupSub
+
+
+class primary_typeSub(supermod.primary_type):
+    def __init__(self, id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(primary_typeSub, self).__init__(id, valueOf_, mixedclass_, content_, )
+supermod.primary_type.subclass = primary_typeSub
+# end class primary_typeSub
 
 
 class secondary_type_listSub(supermod.secondary_type_list):
@@ -137,6 +126,13 @@ class secondary_type_listSub(supermod.secondary_type_list):
         super(secondary_type_listSub, self).__init__(secondary_type, )
 supermod.secondary_type_list.subclass = secondary_type_listSub
 # end class secondary_type_listSub
+
+
+class secondary_typeSub(supermod.secondary_type):
+    def __init__(self, id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(secondary_typeSub, self).__init__(id, valueOf_, mixedclass_, content_, )
+supermod.secondary_type.subclass = secondary_typeSub
+# end class secondary_typeSub
 
 
 class recordingSub(supermod.recording):
@@ -147,29 +143,22 @@ supermod.recording.subclass = recordingSub
 
 
 class labelSub(supermod.label):
-    def __init__(self, type_=None, id=None, name=None, sort_name=None, label_code=None, ipi=None, ipi_list=None, annotation=None, disambiguation=None, country=None, area=None, life_span=None, alias_list=None, release_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(labelSub, self).__init__(type_, id, name, sort_name, label_code, ipi, ipi_list, annotation, disambiguation, country, area, life_span, alias_list, release_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, label_code=None, ipi=None, ipi_list=None, annotation=None, disambiguation=None, country=None, area=None, life_span=None, alias_list=None, release_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(labelSub, self).__init__(id, type_, type_id, name, sort_name, label_code, ipi, ipi_list, annotation, disambiguation, country, area, life_span, alias_list, release_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.label.subclass = labelSub
 # end class labelSub
 
 
 class workSub(supermod.work):
-    def __init__(self, type_=None, id=None, title=None, language=None, artist_credit=None, iswc=None, iswc_list=None, attribute_list=None, annotation=None, disambiguation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(workSub, self).__init__(type_, id, title, language, artist_credit, iswc, iswc_list, attribute_list, annotation, disambiguation, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, title=None, language=None, language_list=None, artist_credit=None, iswc=None, iswc_list=None, attribute_list=None, annotation=None, disambiguation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(workSub, self).__init__(id, type_, type_id, title, language, language_list, artist_credit, iswc, iswc_list, attribute_list, annotation, disambiguation, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.work.subclass = workSub
 # end class workSub
 
 
-class def_area_element_innerSub(supermod.def_area_element_inner):
-    def __init__(self, type_=None, id=None, name=None, sort_name=None, disambiguation=None, iso_3166_1_code_list=None, iso_3166_2_code_list=None, iso_3166_3_code_list=None, annotation=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, anytypeobjs_=None):
-        super(def_area_element_innerSub, self).__init__(type_, id, name, sort_name, disambiguation, iso_3166_1_code_list, iso_3166_2_code_list, iso_3166_3_code_list, annotation, life_span, alias_list, relation_list, tag_list, user_tag_list, anytypeobjs_, )
-supermod.def_area_element_inner.subclass = def_area_element_innerSub
-# end class def_area_element_innerSub
-
-
 class placeSub(supermod.place):
-    def __init__(self, type_=None, id=None, name=None, disambiguation=None, address=None, coordinates=None, annotation=None, area=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
-        super(placeSub, self).__init__(type_, id, name, disambiguation, address, coordinates, annotation, area, life_span, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, disambiguation=None, address=None, coordinates=None, annotation=None, area=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
+        super(placeSub, self).__init__(id, type_, type_id, name, disambiguation, address, coordinates, annotation, area, life_span, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
 supermod.place.subclass = placeSub
 # end class placeSub
 
@@ -182,22 +171,22 @@ supermod.coordinates.subclass = coordinatesSub
 
 
 class instrumentSub(supermod.instrument):
-    def __init__(self, type_=None, id=None, name=None, disambiguation=None, description=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
-        super(instrumentSub, self).__init__(type_, id, name, disambiguation, description, annotation, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, disambiguation=None, description=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
+        super(instrumentSub, self).__init__(id, type_, type_id, name, disambiguation, description, annotation, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
 supermod.instrument.subclass = instrumentSub
 # end class instrumentSub
 
 
 class seriesSub(supermod.series):
-    def __init__(self, type_=None, id=None, name=None, disambiguation=None, ordering_attribute=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
-        super(seriesSub, self).__init__(type_, id, name, disambiguation, ordering_attribute, annotation, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, disambiguation=None, ordering_attribute=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, def_extension_element=None):
+        super(seriesSub, self).__init__(id, type_, type_id, name, disambiguation, ordering_attribute, annotation, alias_list, relation_list, tag_list, user_tag_list, def_extension_element, )
 supermod.series.subclass = seriesSub
 # end class seriesSub
 
 
 class eventSub(supermod.event):
-    def __init__(self, type_=None, id=None, name=None, disambiguation=None, cancelled=None, life_span=None, time=None, setlist=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(eventSub, self).__init__(type_, id, name, disambiguation, cancelled, life_span, time, setlist, annotation, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, disambiguation=None, cancelled=None, life_span=None, time=None, setlist=None, annotation=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(eventSub, self).__init__(id, type_, type_id, name, disambiguation, cancelled, life_span, time, setlist, annotation, alias_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.event.subclass = eventSub
 # end class eventSub
 
@@ -245,8 +234,8 @@ supermod.name_credit.subclass = name_creditSub
 
 
 class relationSub(supermod.relation):
-    def __init__(self, type_id=None, type_=None, target=None, ordering_key=None, direction=None, attribute_list=None, begin=None, end=None, ended=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, anytypeobjs_=None):
-        super(relationSub, self).__init__(type_id, type_, target, ordering_key, direction, attribute_list, begin, end, ended, artist, release, release_group, recording, label, work, area, place, instrument, series, event, anytypeobjs_, )
+    def __init__(self, type_=None, type_id=None, target=None, ordering_key=None, direction=None, attribute_list=None, begin=None, end=None, ended=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, def_extension_element=None, source_credit=None, target_credit=None):
+        super(relationSub, self).__init__(type_, type_id, target, ordering_key, direction, attribute_list, begin, end, ended, artist, release, release_group, recording, label, work, area, place, instrument, series, event, def_extension_element, source_credit, target_credit, )
 supermod.relation.subclass = relationSub
 # end class relationSub
 
@@ -259,8 +248,8 @@ supermod.target.subclass = targetSub
 
 
 class aliasSub(supermod.alias):
-    def __init__(self, locale=None, type_=None, primary=None, sort_name=None, end_date=None, begin_date=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(aliasSub, self).__init__(locale, type_, primary, sort_name, end_date, begin_date, valueOf_, mixedclass_, content_, )
+    def __init__(self, locale=None, sort_name=None, type_=None, type_id=None, primary=None, begin_date=None, end_date=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(aliasSub, self).__init__(locale, sort_name, type_, type_id, primary, begin_date, end_date, valueOf_, mixedclass_, content_, )
 supermod.alias.subclass = aliasSub
 # end class aliasSub
 
@@ -300,11 +289,11 @@ supermod.medium.subclass = mediumSub
 # end class mediumSub
 
 
-class def_track_dataSub(supermod.def_track_data):
-    def __init__(self, id=None, position=None, number=None, title=None, length=None, artist_credit=None, recording=None):
-        super(def_track_dataSub, self).__init__(id, position, number, title, length, artist_credit, recording, )
-supermod.def_track_data.subclass = def_track_dataSub
-# end class def_track_dataSub
+class formatSub(supermod.format):
+    def __init__(self, id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(formatSub, self).__init__(id, valueOf_, mixedclass_, content_, )
+supermod.format.subclass = formatSub
+# end class formatSub
 
 
 class annotationSub(supermod.annotation):
@@ -315,22 +304,22 @@ supermod.annotation.subclass = annotationSub
 
 
 class cdstubSub(supermod.cdstub):
-    def __init__(self, id=None, title=None, artist=None, barcode=None, comment=None, track_list=None, anytypeobjs_=None):
-        super(cdstubSub, self).__init__(id, title, artist, barcode, comment, track_list, anytypeobjs_, )
+    def __init__(self, id=None, title=None, artist=None, barcode=None, comment=None, track_list=None, def_extension_element=None):
+        super(cdstubSub, self).__init__(id, title, artist, barcode, comment, track_list, def_extension_element, )
 supermod.cdstub.subclass = cdstubSub
 # end class cdstubSub
 
 
 class freedb_discSub(supermod.freedb_disc):
-    def __init__(self, id=None, title=None, artist=None, category=None, year=None, track_list=None, anytypeobjs_=None):
-        super(freedb_discSub, self).__init__(id, title, artist, category, year, track_list, anytypeobjs_, )
+    def __init__(self, id=None, title=None, artist=None, category=None, year=None, track_list=None, def_extension_element=None):
+        super(freedb_discSub, self).__init__(id, title, artist, category, year, track_list, def_extension_element, )
 supermod.freedb_disc.subclass = freedb_discSub
 # end class freedb_discSub
 
 
 class collectionSub(supermod.collection):
-    def __init__(self, type_=None, id=None, entity_type=None, name=None, editor=None, release_list=None, event_list=None):
-        super(collectionSub, self).__init__(type_, id, entity_type, name, editor, release_list, event_list, )
+    def __init__(self, id=None, type_=None, type_id=None, entity_type=None, name=None, editor=None, area_list=None, artist_list=None, event_list=None, instrument_list=None, label_list=None, place_list=None, recording_list=None, release_list=None, release_group_list=None, series_list=None, work_list=None):
+        super(collectionSub, self).__init__(id, type_, type_id, entity_type, name, editor, area_list, artist_list, event_list, instrument_list, label_list, place_list, recording_list, release_list, release_group_list, series_list, work_list, )
 supermod.collection.subclass = collectionSub
 # end class collectionSub
 
@@ -539,8 +528,8 @@ supermod.isrc_list.subclass = isrc_listSub
 
 
 class relation_listSub(supermod.relation_list):
-    def __init__(self, count=None, offset=None, target_type=None, relation=None):
-        super(relation_listSub, self).__init__(count, offset, target_type, relation, )
+    def __init__(self, target_type=None, count=None, offset=None, relation=None):
+        super(relation_listSub, self).__init__(target_type, count, offset, relation, )
 supermod.relation_list.subclass = relation_listSub
 # end class relation_listSub
 
@@ -630,8 +619,8 @@ supermod.attribute_listType.subclass = attribute_listTypeSub
 
 
 class attributeTypeSub(supermod.attributeType):
-    def __init__(self, type_=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeTypeSub, self).__init__(type_, valueOf_, mixedclass_, content_, )
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeTypeSub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_, )
 supermod.attributeType.subclass = attributeTypeSub
 # end class attributeTypeSub
 
@@ -651,8 +640,8 @@ supermod.attribute_listType1.subclass = attribute_listType1Sub
 
 
 class attributeType2Sub(supermod.attributeType2):
-    def __init__(self, credited_as=None, value=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType2Sub, self).__init__(credited_as, value, valueOf_, mixedclass_, content_, )
+    def __init__(self, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType2Sub, self).__init__(value, credited_as, valueOf_, mixedclass_, content_, )
 supermod.attributeType2.subclass = attributeType2Sub
 # end class attributeType2Sub
 
@@ -721,8 +710,8 @@ supermod.attribute_listType8.subclass = attribute_listType8Sub
 
 
 class attributeType9Sub(supermod.attributeType9):
-    def __init__(self, credited_as=None, value=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType9Sub, self).__init__(credited_as, value, valueOf_, mixedclass_, content_, )
+    def __init__(self, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType9Sub, self).__init__(value, credited_as, valueOf_, mixedclass_, content_, )
 supermod.attributeType9.subclass = attributeType9Sub
 # end class attributeType9Sub
 
@@ -735,8 +724,8 @@ supermod.attribute_listType10.subclass = attribute_listType10Sub
 
 
 class attributeType11Sub(supermod.attributeType11):
-    def __init__(self, type_=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType11Sub, self).__init__(type_, valueOf_, mixedclass_, content_, )
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType11Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_, )
 supermod.attributeType11.subclass = attributeType11Sub
 # end class attributeType11Sub
 
@@ -749,8 +738,8 @@ supermod.attribute_listType12.subclass = attribute_listType12Sub
 
 
 class attributeType13Sub(supermod.attributeType13):
-    def __init__(self, type_=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType13Sub, self).__init__(type_, valueOf_, mixedclass_, content_, )
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType13Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_, )
 supermod.attributeType13.subclass = attributeType13Sub
 # end class attributeType13Sub
 
@@ -770,8 +759,8 @@ supermod.attribute_listType15.subclass = attribute_listType15Sub
 
 
 class attributeType16Sub(supermod.attributeType16):
-    def __init__(self, credited_as=None, value=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType16Sub, self).__init__(credited_as, value, valueOf_, mixedclass_, content_, )
+    def __init__(self, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType16Sub, self).__init__(value, credited_as, valueOf_, mixedclass_, content_, )
 supermod.attributeType16.subclass = attributeType16Sub
 # end class attributeType16Sub
 
@@ -840,8 +829,8 @@ supermod.attribute_listType25.subclass = attribute_listType25Sub
 
 
 class attributeType26Sub(supermod.attributeType26):
-    def __init__(self, credited_as=None, value=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType26Sub, self).__init__(credited_as, value, valueOf_, mixedclass_, content_, )
+    def __init__(self, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType26Sub, self).__init__(value, credited_as, valueOf_, mixedclass_, content_, )
 supermod.attributeType26.subclass = attributeType26Sub
 # end class attributeType26Sub
 
@@ -854,8 +843,8 @@ supermod.attribute_listType27.subclass = attribute_listType27Sub
 
 
 class attributeType28Sub(supermod.attributeType28):
-    def __init__(self, type_=None, valueOf_=None, mixedclass_=None, content_=None):
-        super(attributeType28Sub, self).__init__(type_, valueOf_, mixedclass_, content_, )
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None):
+        super(attributeType28Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_, )
 supermod.attributeType28.subclass = attributeType28Sub
 # end class attributeType28Sub
 
@@ -870,12 +859,13 @@ def get_root_tag(node):
 
 
 def parse(inFilename, silence=False):
-    doc = parsexml_(inFilename)
+    parser = None
+    doc = parsexml_(inFilename, parser)
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'metadata'
-        rootClass = supermod.metadata
+        rootTag = 'def_area_element_inner'
+        rootClass = supermod.def_area_element_inner
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -890,12 +880,13 @@ def parse(inFilename, silence=False):
 
 
 def parseEtree(inFilename, silence=False):
-    doc = parsexml_(inFilename)
+    parser = None
+    doc = parsexml_(inFilename, parser)
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'metadata'
-        rootClass = supermod.metadata
+        rootTag = 'def_area_element_inner'
+        rootClass = supermod.def_area_element_inner
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -914,12 +905,13 @@ def parseEtree(inFilename, silence=False):
 
 def parseString(inString, silence=False):
     from StringIO import StringIO
-    doc = parsexml_(StringIO(inString))
+    parser = None
+    doc = parsexml_(StringIO(inString), parser)
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'metadata'
-        rootClass = supermod.metadata
+        rootTag = 'def_area_element_inner'
+        rootClass = supermod.def_area_element_inner
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -933,12 +925,13 @@ def parseString(inString, silence=False):
 
 
 def parseLiteral(inFilename, silence=False):
-    doc = parsexml_(inFilename)
+    parser = None
+    doc = parsexml_(inFilename, parser)
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'metadata'
-        rootClass = supermod.metadata
+        rootTag = 'def_area_element_inner'
+        rootClass = supermod.def_area_element_inner
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
@@ -958,7 +951,7 @@ Usage: python ???.py <infilename>
 
 
 def usage():
-    print USAGE_TEXT
+    print(USAGE_TEXT)
     sys.exit(1)
 
 
