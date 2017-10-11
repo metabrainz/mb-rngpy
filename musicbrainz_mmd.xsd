@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: 3847c3231feeb744bf3e5f4671076d0bf2f52cd9 $
+  $Id: 597a9111fb0c4926f26bad73e9bd7ba398a53297 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -91,7 +91,6 @@
         <xs:element minOccurs="0" ref="mmd-2.0:recording-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:release-group-list"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:work-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:tag-list"/>

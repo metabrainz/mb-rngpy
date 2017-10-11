@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Tue Jun  6 14:50:50 2017 by generateDS.py version 2.26a.
+# Generated Sun Oct 15 16:24:42 2017 by generateDS.py version 2.28b.
+# Python 2.7.13 (default, Jan 19 2017, 14:48:08)  [GCC 6.3.0 20170118]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -14,7 +15,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /usr/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /run/media/sam/Data/dev/sir/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -66,8 +67,8 @@ supermod.metadata.subclass = metadataSub
 
 
 class artistSub(supermod.artist):
-    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, gender=None, country=None, area=None, begin_area=None, end_area=None, annotation=None, disambiguation=None, ipi=None, ipi_list=None, life_span=None, alias_list=None, recording_list=None, release_list=None, release_group_list=None, label_list=None, work_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
-        super(artistSub, self).__init__(id, type_, type_id, name, sort_name, gender, country, area, begin_area, end_area, annotation, disambiguation, ipi, ipi_list, life_span, alias_list, recording_list, release_list, release_group_list, label_list, work_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
+    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, gender=None, country=None, area=None, begin_area=None, end_area=None, annotation=None, disambiguation=None, ipi=None, ipi_list=None, life_span=None, alias_list=None, recording_list=None, release_list=None, release_group_list=None, work_list=None, relation_list=None, tag_list=None, user_tag_list=None, rating=None, user_rating=None, def_extension_element=None):
+        super(artistSub, self).__init__(id, type_, type_id, name, sort_name, gender, country, area, begin_area, end_area, annotation, disambiguation, ipi, ipi_list, life_span, alias_list, recording_list, release_list, release_group_list, work_list, relation_list, tag_list, user_tag_list, rating, user_rating, def_extension_element, )
 supermod.artist.subclass = artistSub
 # end class artistSub
 
