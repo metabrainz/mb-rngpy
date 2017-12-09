@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Sun Oct 15 16:24:42 2017 by generateDS.py version 2.28b.
-# Python 2.7.13 (default, Jan 19 2017, 14:48:08)  [GCC 6.3.0 20170118]
+# Generated Sat Dec  9 16:58:42 2017 by generateDS.py version 2.29.2.
+# Python 3.6.1 (default, Sep  7 2017, 16:36:03)  [GCC 6.3.0 20170406]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -15,7 +15,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /run/media/sam/Data/dev/sir/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /run/media/sam/Data/dev/sir/venv3/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -905,7 +905,10 @@ def parseEtree(inFilename, silence=False):
 
 
 def parseString(inString, silence=False):
-    from StringIO import StringIO
+    if sys.version_info.major == 2:
+        from StringIO import StringIO
+    else:
+        from io import BytesIO as StringIO
     parser = None
     doc = parsexml_(StringIO(inString), parser)
     rootNode = doc.getroot()

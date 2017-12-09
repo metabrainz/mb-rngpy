@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Sun Oct 15 16:24:42 2017 by generateDS.py version 2.28b.
-# Python 2.7.13 (default, Jan 19 2017, 14:48:08)  [GCC 6.3.0 20170118]
+# Generated Sat Dec  9 16:58:42 2017 by generateDS.py version 2.29.2.
+# Python 3.6.1 (default, Sep  7 2017, 16:36:03)  [GCC 6.3.0 20170406]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -16,7 +16,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /run/media/sam/Data/dev/sir/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /run/media/sam/Data/dev/sir/venv3/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -834,13 +834,13 @@ class def_area_element_inner(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.sort_name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssort-name>%s</%ssort-name>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:sort-name>%s</mmd-2.0:sort-name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), eol_))
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.iso_3166_1_code_list is not None:
             self.iso_3166_1_code_list.export(outfile, level, namespace_='mmd-2.0:', name_='iso-3166-1-code-list', pretty_print=pretty_print)
         if self.iso_3166_2_code_list is not None:
@@ -1078,16 +1078,16 @@ class def_track_data(GeneratedsSuper):
             eol_ = ''
         if self.position is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sposition>%s</%sposition>%s' % (namespace_, self.gds_format_integer(self.position, input_name='position'), namespace_, eol_))
+            outfile.write('<mmd-2.0:position>%s</mmd-2.0:position>%s' % (self.gds_format_integer(self.position, input_name='position'), eol_))
         if self.number is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%snumber>%s</%snumber>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.number), input_name='number')), namespace_, eol_))
+            outfile.write('<mmd-2.0:number>%s</mmd-2.0:number>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.number), input_name='number')), eol_))
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
         if self.artist_credit is not None:
             self.artist_credit.export(outfile, level, namespace_='mmd-2.0:', name_='artist-credit', pretty_print=pretty_print)
         if self.recording is not None:
@@ -1437,7 +1437,7 @@ class metadata(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         if self.collection is not None:
             self.collection.export(outfile, level, namespace_='mmd-2.0:', name_='collection', pretty_print=pretty_print)
         if self.editor is not None:
@@ -1486,7 +1486,7 @@ class metadata(GeneratedsSuper):
             self.entity_list.export(outfile, level, namespace_='mmd-2.0:', name_='entity-list', pretty_print=pretty_print)
         if self.def_extension_element is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.def_extension_element), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.def_extension_element), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='metadata', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -2043,15 +2043,15 @@ class artist(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.sort_name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssort-name>%s</%ssort-name>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:sort-name>%s</mmd-2.0:sort-name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), eol_))
         if self.gender is not None:
             self.gender.export(outfile, level, namespace_='mmd-2.0:', name_='gender', pretty_print=pretty_print)
         if self.country is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scountry>%s</%scountry>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), namespace_, eol_))
+            outfile.write('<mmd-2.0:country>%s</mmd-2.0:country>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), eol_))
         if self.area is not None:
             self.area.export(outfile, level, namespace_='mmd-2.0:', name_='area', pretty_print=pretty_print)
         if self.begin_area is not None:
@@ -2062,10 +2062,10 @@ class artist(GeneratedsSuper):
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.ipi is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sipi>%s</%sipi>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.ipi), input_name='ipi')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ipi>%s</mmd-2.0:ipi>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.ipi), input_name='ipi')), eol_))
         if self.ipi_list is not None:
             self.ipi_list.export(outfile, level, namespace_='mmd-2.0:', name_='ipi-list', pretty_print=pretty_print)
         if self.life_span is not None:
@@ -2090,10 +2090,10 @@ class artist(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='artist', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -2350,7 +2350,7 @@ class gender(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -2371,6 +2371,7 @@ class gender(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='gender')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='gender'):
         if self.id is not None and 'id' not in already_processed:
@@ -2493,13 +2494,13 @@ class life_span(GeneratedsSuper):
             eol_ = ''
         if self.begin is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbegin>%s</%sbegin>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), namespace_, eol_))
+            outfile.write('<mmd-2.0:begin>%s</mmd-2.0:begin>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), eol_))
         if self.end is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%send>%s</%send>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), namespace_, eol_))
+            outfile.write('<mmd-2.0:end>%s</mmd-2.0:end>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), eol_))
         if self.ended is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sended>%s</%sended>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.ended), input_name='ended')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ended>%s</mmd-2.0:ended>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.ended), input_name='ended')), eol_))
     def to_etree(self, parent_element=None, name_='life-span', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -2746,20 +2747,20 @@ class release(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.status is not None:
             self.status.export(outfile, level, namespace_='mmd-2.0:', name_='status', pretty_print=pretty_print)
         if self.quality is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%squality>%s</%squality>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.quality), input_name='quality')), namespace_, eol_))
+            outfile.write('<mmd-2.0:quality>%s</mmd-2.0:quality>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.quality), input_name='quality')), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.packaging is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%spackaging>%s</%spackaging>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.packaging), input_name='packaging')), namespace_, eol_))
+            outfile.write('<mmd-2.0:packaging>%s</mmd-2.0:packaging>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.packaging), input_name='packaging')), eol_))
         if self.text_representation is not None:
             self.text_representation.export(outfile, level, namespace_='mmd-2.0:', name_='text-representation', pretty_print=pretty_print)
         if self.artist_credit is not None:
@@ -2770,18 +2771,18 @@ class release(GeneratedsSuper):
             self.release_group.export(outfile, level, namespace_='mmd-2.0:', name_='release-group', pretty_print=pretty_print)
         if self.date is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdate>%s</%sdate>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.date), input_name='date')), namespace_, eol_))
+            outfile.write('<mmd-2.0:date>%s</mmd-2.0:date>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.date), input_name='date')), eol_))
         if self.country is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scountry>%s</%scountry>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), namespace_, eol_))
+            outfile.write('<mmd-2.0:country>%s</mmd-2.0:country>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), eol_))
         if self.release_event_list is not None:
             self.release_event_list.export(outfile, level, namespace_='mmd-2.0:', name_='release-event-list', pretty_print=pretty_print)
         if self.barcode is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbarcode>%s</%sbarcode>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.barcode), input_name='barcode')), namespace_, eol_))
+            outfile.write('<mmd-2.0:barcode>%s</mmd-2.0:barcode>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.barcode), input_name='barcode')), eol_))
         if self.asin is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sasin>%s</%sasin>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.asin), input_name='asin')), namespace_, eol_))
+            outfile.write('<mmd-2.0:asin>%s</mmd-2.0:asin>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.asin), input_name='asin')), eol_))
         if self.cover_art_archive is not None:
             self.cover_art_archive.export(outfile, level, namespace_='mmd-2.0:', name_='cover-art-archive', pretty_print=pretty_print)
         if self.label_info_list is not None:
@@ -2798,7 +2799,7 @@ class release(GeneratedsSuper):
             self.collection_list.export(outfile, level, namespace_='mmd-2.0:', name_='collection-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='release', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -3043,7 +3044,7 @@ class status(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -3064,6 +3065,7 @@ class status(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='status')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='status'):
         if self.id is not None and 'id' not in already_processed:
@@ -3185,10 +3187,10 @@ class text_representation(GeneratedsSuper):
             eol_ = ''
         if self.language is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slanguage>%s</%slanguage>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.language), input_name='language')), namespace_, eol_))
+            outfile.write('<mmd-2.0:language>%s</mmd-2.0:language>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.language), input_name='language')), eol_))
         if self.script is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sscript>%s</%sscript>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.script), input_name='script')), namespace_, eol_))
+            outfile.write('<mmd-2.0:script>%s</mmd-2.0:script>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.script), input_name='script')), eol_))
     def to_etree(self, parent_element=None, name_='text-representation', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -3446,15 +3448,15 @@ class release_group(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.first_release_date is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sfirst-release-date>%s</%sfirst-release-date>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.first_release_date), input_name='first-release-date')), namespace_, eol_))
+            outfile.write('<mmd-2.0:first-release-date>%s</mmd-2.0:first-release-date>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.first_release_date), input_name='first-release-date')), eol_))
         if self.primary_type is not None:
             self.primary_type.export(outfile, level, namespace_='mmd-2.0:', name_='primary-type', pretty_print=pretty_print)
         if self.secondary_type_list is not None:
@@ -3475,10 +3477,10 @@ class release_group(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='release-group', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -3671,7 +3673,7 @@ class primary_type(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -3692,6 +3694,7 @@ class primary_type(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='primary-type')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='primary-type'):
         if self.id is not None and 'id' not in already_processed:
@@ -3860,7 +3863,7 @@ class secondary_type(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -3881,6 +3884,7 @@ class secondary_type(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='secondary-type')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='secondary-type'):
         if self.id is not None and 'id' not in already_processed:
@@ -4063,18 +4067,18 @@ class recording(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.video is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%svideo>%s</%svideo>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.video), input_name='video')), namespace_, eol_))
+            outfile.write('<mmd-2.0:video>%s</mmd-2.0:video>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.video), input_name='video')), eol_))
         if self.artist_credit is not None:
             self.artist_credit.export(outfile, level, namespace_='mmd-2.0:', name_='artist-credit', pretty_print=pretty_print)
         if self.release_list is not None:
@@ -4095,10 +4099,10 @@ class recording(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='recording', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -4432,26 +4436,26 @@ class label(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.sort_name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssort-name>%s</%ssort-name>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:sort-name>%s</mmd-2.0:sort-name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.sort_name), input_name='sort-name')), eol_))
         if self.label_code is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slabel-code>%s</%slabel-code>%s' % (namespace_, self.gds_format_integer(self.label_code, input_name='label-code'), namespace_, eol_))
+            outfile.write('<mmd-2.0:label-code>%s</mmd-2.0:label-code>%s' % (self.gds_format_integer(self.label_code, input_name='label-code'), eol_))
         if self.ipi is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sipi>%s</%sipi>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.ipi), input_name='ipi')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ipi>%s</mmd-2.0:ipi>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.ipi), input_name='ipi')), eol_))
         if self.ipi_list is not None:
             self.ipi_list.export(outfile, level, namespace_='mmd-2.0:', name_='ipi-list', pretty_print=pretty_print)
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.country is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scountry>%s</%scountry>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), namespace_, eol_))
+            outfile.write('<mmd-2.0:country>%s</mmd-2.0:country>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.country), input_name='country')), eol_))
         if self.area is not None:
             self.area.export(outfile, level, namespace_='mmd-2.0:', name_='area', pretty_print=pretty_print)
         if self.life_span is not None:
@@ -4470,10 +4474,10 @@ class label(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='label', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -4819,17 +4823,17 @@ class work(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.language is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slanguage>%s</%slanguage>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.language), input_name='language')), namespace_, eol_))
+            outfile.write('<mmd-2.0:language>%s</mmd-2.0:language>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.language), input_name='language')), eol_))
         if self.language_list is not None:
             self.language_list.export(outfile, level, namespace_='mmd-2.0:', name_='language-list', pretty_print=pretty_print)
         if self.artist_credit is not None:
             self.artist_credit.export(outfile, level, namespace_='mmd-2.0:', name_='artist-credit', pretty_print=pretty_print)
         if self.iswc is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%siswc>%s</%siswc>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.iswc), input_name='iswc')), namespace_, eol_))
+            outfile.write('<mmd-2.0:iswc>%s</mmd-2.0:iswc>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.iswc), input_name='iswc')), eol_))
         if self.iswc_list is not None:
             self.iswc_list.export(outfile, level, namespace_='mmd-2.0:', name_='iswc-list', pretty_print=pretty_print)
         if self.attribute_list is not None:
@@ -4838,7 +4842,7 @@ class work(GeneratedsSuper):
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.alias_list is not None:
             self.alias_list.export(outfile, level, namespace_='mmd-2.0:', name_='alias-list', pretty_print=pretty_print)
         for relation_list_ in self.relation_list:
@@ -4851,10 +4855,10 @@ class work(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='work', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -5156,13 +5160,13 @@ class place(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.address is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%saddress>%s</%saddress>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.address), input_name='address')), namespace_, eol_))
+            outfile.write('<mmd-2.0:address>%s</mmd-2.0:address>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.address), input_name='address')), eol_))
         if self.coordinates is not None:
             self.coordinates.export(outfile, level, namespace_='mmd-2.0:', name_='coordinates', pretty_print=pretty_print)
         if self.annotation is not None:
@@ -5181,7 +5185,7 @@ class place(GeneratedsSuper):
             self.user_tag_list.export(outfile, level, namespace_='mmd-2.0:', name_='user-tag-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='place', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -5370,10 +5374,10 @@ class coordinates(GeneratedsSuper):
             eol_ = ''
         if self.latitude is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slatitude>%s</%slatitude>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.latitude), input_name='latitude')), namespace_, eol_))
+            outfile.write('<mmd-2.0:latitude>%s</mmd-2.0:latitude>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.latitude), input_name='latitude')), eol_))
         if self.longitude is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slongitude>%s</%slongitude>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.longitude), input_name='longitude')), namespace_, eol_))
+            outfile.write('<mmd-2.0:longitude>%s</mmd-2.0:longitude>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.longitude), input_name='longitude')), eol_))
     def to_etree(self, parent_element=None, name_='coordinates', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -5526,13 +5530,13 @@ class instrument(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.description is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdescription>%s</%sdescription>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.description), input_name='description')), namespace_, eol_))
+            outfile.write('<mmd-2.0:description>%s</mmd-2.0:description>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.description), input_name='description')), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.alias_list is not None:
@@ -5545,7 +5549,7 @@ class instrument(GeneratedsSuper):
             self.user_tag_list.export(outfile, level, namespace_='mmd-2.0:', name_='user-tag-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='instrument', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -5767,13 +5771,13 @@ class series(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.ordering_attribute is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sordering-attribute>%s</%sordering-attribute>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.ordering_attribute), input_name='ordering-attribute')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ordering-attribute>%s</mmd-2.0:ordering-attribute>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.ordering_attribute), input_name='ordering-attribute')), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.alias_list is not None:
@@ -5786,7 +5790,7 @@ class series(GeneratedsSuper):
             self.user_tag_list.export(outfile, level, namespace_='mmd-2.0:', name_='user-tag-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='series', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -6040,21 +6044,21 @@ class event(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.disambiguation is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespace_, eol_))
+            outfile.write('<mmd-2.0:disambiguation>%s</mmd-2.0:disambiguation>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), eol_))
         if self.cancelled is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scancelled>%s</%scancelled>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.cancelled), input_name='cancelled')), namespace_, eol_))
+            outfile.write('<mmd-2.0:cancelled>%s</mmd-2.0:cancelled>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.cancelled), input_name='cancelled')), eol_))
         if self.life_span is not None:
             self.life_span.export(outfile, level, namespace_, name_='life-span', pretty_print=pretty_print)
         if self.time is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stime>%s</%stime>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.time), input_name='time')), namespace_, eol_))
+            outfile.write('<mmd-2.0:time>%s</mmd-2.0:time>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.time), input_name='time')), eol_))
         if self.setlist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssetlist>%s</%ssetlist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.setlist), input_name='setlist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:setlist>%s</mmd-2.0:setlist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.setlist), input_name='setlist')), eol_))
         if self.annotation is not None:
             self.annotation.export(outfile, level, namespace_='mmd-2.0:', name_='annotation', pretty_print=pretty_print)
         if self.alias_list is not None:
@@ -6069,10 +6073,10 @@ class event(GeneratedsSuper):
             self.rating.export(outfile, level, namespace_='mmd-2.0:', name_='rating', pretty_print=pretty_print)
         if self.user_rating is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%suser-rating>%s</%suser-rating>%s' % (namespace_, self.gds_format_integer(self.user_rating, input_name='user-rating'), namespace_, eol_))
+            outfile.write('<mmd-2.0:user-rating>%s</mmd-2.0:user-rating>%s' % (self.gds_format_integer(self.user_rating, input_name='user-rating'), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='event', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -6299,7 +6303,7 @@ class url(GeneratedsSuper):
             eol_ = ''
         if self.resource is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sresource>%s</%sresource>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.resource), input_name='resource')), namespace_, eol_))
+            outfile.write('<mmd-2.0:resource>%s</mmd-2.0:resource>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.resource), input_name='resource')), eol_))
         for relation_list_ in self.relation_list:
             relation_list_.export(outfile, level, namespace_='mmd-2.0:', name_='relation-list', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='url', mapping_=None):
@@ -6421,14 +6425,14 @@ class disc(GeneratedsSuper):
             eol_ = ''
         if self.sectors is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssectors>%s</%ssectors>%s' % (namespace_, self.gds_format_integer(self.sectors, input_name='sectors'), namespace_, eol_))
+            outfile.write('<mmd-2.0:sectors>%s</mmd-2.0:sectors>%s' % (self.gds_format_integer(self.sectors, input_name='sectors'), eol_))
         if self.offset_list is not None:
             self.offset_list.export(outfile, level, namespace_='mmd-2.0:', name_='offset-list', pretty_print=pretty_print)
         if self.release_list is not None:
             self.release_list.export(outfile, level, namespace_='mmd-2.0:', name_='release-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='disc', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -6563,7 +6567,7 @@ class puid(GeneratedsSuper):
             self.recording_list.export(outfile, level, namespace_='mmd-2.0:', name_='recording-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='puid', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -6677,7 +6681,7 @@ class isrc(GeneratedsSuper):
             self.recording_list.export(outfile, level, namespace_='mmd-2.0:', name_='recording-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='isrc', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -6873,7 +6877,7 @@ class name_credit(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.artist is not None:
             self.artist.export(outfile, level, namespace_='mmd-2.0:', name_='artist', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='name-credit', mapping_=None):
@@ -7092,21 +7096,21 @@ class relation(GeneratedsSuper):
             self.target.export(outfile, level, namespace_='mmd-2.0:', name_='target', pretty_print=pretty_print)
         if self.ordering_key is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sordering-key>%s</%sordering-key>%s' % (namespace_, self.gds_format_integer(self.ordering_key, input_name='ordering-key'), namespace_, eol_))
+            outfile.write('<mmd-2.0:ordering-key>%s</mmd-2.0:ordering-key>%s' % (self.gds_format_integer(self.ordering_key, input_name='ordering-key'), eol_))
         if self.direction is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdirection>%s</%sdirection>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.direction), input_name='direction')), namespace_, eol_))
+            outfile.write('<mmd-2.0:direction>%s</mmd-2.0:direction>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.direction), input_name='direction')), eol_))
         if self.attribute_list is not None:
             self.attribute_list.export(outfile, level, namespace_, name_='attribute-list', pretty_print=pretty_print)
         if self.begin is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbegin>%s</%sbegin>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), namespace_, eol_))
+            outfile.write('<mmd-2.0:begin>%s</mmd-2.0:begin>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), eol_))
         if self.end is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%send>%s</%send>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), namespace_, eol_))
+            outfile.write('<mmd-2.0:end>%s</mmd-2.0:end>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), eol_))
         if self.ended is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sended>%s</%sended>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.ended), input_name='ended')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ended>%s</mmd-2.0:ended>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.ended), input_name='ended')), eol_))
         if self.artist is not None:
             self.artist.export(outfile, level, namespace_='mmd-2.0:', name_='artist', pretty_print=pretty_print)
         if self.release is not None:
@@ -7131,13 +7135,13 @@ class relation(GeneratedsSuper):
             self.event.export(outfile, level, namespace_='mmd-2.0:', name_='event', pretty_print=pretty_print)
         if self.def_extension_element is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.def_extension_element), input_name='def_extension_element')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.def_extension_element), input_name='def_extension_element')), eol_))
         if self.source_credit is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%ssource-credit>%s</%ssource-credit>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.source_credit), input_name='source-credit')), namespace_, eol_))
+            outfile.write('<mmd-2.0:source-credit>%s</mmd-2.0:source-credit>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.source_credit), input_name='source-credit')), eol_))
         if self.target_credit is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%starget-credit>%s</%starget-credit>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.target_credit), input_name='target-credit')), namespace_, eol_))
+            outfile.write('<mmd-2.0:target-credit>%s</mmd-2.0:target-credit>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.target_credit), input_name='target-credit')), eol_))
     def to_etree(self, parent_element=None, name_='relation', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -7376,7 +7380,7 @@ class target(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -7489,7 +7493,7 @@ class alias(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -7510,6 +7514,7 @@ class alias(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='alias')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='alias'):
         if self.locale is not None and 'locale' not in already_processed:
@@ -7739,7 +7744,7 @@ class tag(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
     def to_etree(self, parent_element=None, name_='tag', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -7834,7 +7839,7 @@ class user_tag(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
     def to_etree(self, parent_element=None, name_='user-tag', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -7887,7 +7892,7 @@ class rating(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -8014,7 +8019,7 @@ class label_info(GeneratedsSuper):
             eol_ = ''
         if self.catalog_number is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scatalog-number>%s</%scatalog-number>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.catalog_number), input_name='catalog-number')), namespace_, eol_))
+            outfile.write('<mmd-2.0:catalog-number>%s</mmd-2.0:catalog-number>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.catalog_number), input_name='catalog-number')), eol_))
         if self.label is not None:
             self.label.export(outfile, level, namespace_='mmd-2.0:', name_='label', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='label-info', mapping_=None):
@@ -8133,10 +8138,10 @@ class medium(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), namespace_, eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.position is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sposition>%s</%sposition>%s' % (namespace_, self.gds_format_integer(self.position, input_name='position'), namespace_, eol_))
+            outfile.write('<mmd-2.0:position>%s</mmd-2.0:position>%s' % (self.gds_format_integer(self.position, input_name='position'), eol_))
         if self.format is not None:
             self.format.export(outfile, level, namespace_='mmd-2.0:', name_='format', pretty_print=pretty_print)
         if self.disc_list is not None:
@@ -8261,7 +8266,7 @@ class format(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -8282,6 +8287,7 @@ class format(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='format')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='format'):
         if self.id is not None and 'id' not in already_processed:
@@ -8406,16 +8412,16 @@ class annotation(GeneratedsSuper):
             eol_ = ''
         if self.entity is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sentity>%s</%sentity>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.entity), input_name='entity')), namespace_, eol_))
+            outfile.write('<mmd-2.0:entity>%s</mmd-2.0:entity>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.entity), input_name='entity')), eol_))
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespace_, eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.text is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stext>%s</%stext>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.text), input_name='text')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:text>%s</mmd-2.0:text>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.text), input_name='text')), eol_))
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='annotation', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -8556,21 +8562,21 @@ class cdstub(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.barcode is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbarcode>%s</%sbarcode>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.barcode), input_name='barcode')), namespace_, eol_))
+            outfile.write('<mmd-2.0:barcode>%s</mmd-2.0:barcode>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.barcode), input_name='barcode')), eol_))
         if self.comment is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scomment>%s</%scomment>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.comment), input_name='comment')), namespace_, eol_))
+            outfile.write('<mmd-2.0:comment>%s</mmd-2.0:comment>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.comment), input_name='comment')), eol_))
         if self.track_list is not None:
             self.track_list.export(outfile, level, namespace_, name_='track-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='cdstub', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -8730,21 +8736,21 @@ class freedb_disc(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.category is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scategory>%s</%scategory>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.category), input_name='category')), namespace_, eol_))
+            outfile.write('<mmd-2.0:category>%s</mmd-2.0:category>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.category), input_name='category')), eol_))
         if self.year is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%syear>%s</%syear>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.year), input_name='year')), namespace_, eol_))
+            outfile.write('<mmd-2.0:year>%s</mmd-2.0:year>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.year), input_name='year')), eol_))
         if self.track_list is not None:
             self.track_list.export(outfile, level, namespace_, name_='track-list', pretty_print=pretty_print)
         for def_extension_element_ in self.def_extension_element:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), namespace_, eol_))
+            outfile.write('<mmd-2.0:def_extension_element>%s</mmd-2.0:def_extension_element>%s' % (self.gds_encode(self.gds_format_string(quote_xml(def_extension_element_), input_name='def_extension_element')), eol_))
     def to_etree(self, parent_element=None, name_='freedb-disc', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -9011,10 +9017,10 @@ class collection(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.editor is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%seditor>%s</%seditor>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.editor), input_name='editor')), namespace_, eol_))
+            outfile.write('<mmd-2.0:editor>%s</mmd-2.0:editor>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.editor), input_name='editor')), eol_))
         if self.area_list is not None:
             self.area_list.export(outfile, level, namespace_='mmd-2.0:', name_='area-list', pretty_print=pretty_print)
         if self.artist_list is not None:
@@ -9288,24 +9294,24 @@ class editor(GeneratedsSuper):
             eol_ = ''
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sname>%s</%sname>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:name>%s</mmd-2.0:name>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), eol_))
         if self.member_since is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%smember-since>%s</%smember-since>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.member_since), input_name='member-since')), namespace_, eol_))
+            outfile.write('<mmd-2.0:member-since>%s</mmd-2.0:member-since>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.member_since), input_name='member-since')), eol_))
         if self.privs is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sprivs>%s</%sprivs>%s' % (namespace_, self.gds_format_integer(self.privs, input_name='privs'), namespace_, eol_))
+            outfile.write('<mmd-2.0:privs>%s</mmd-2.0:privs>%s' % (self.gds_format_integer(self.privs, input_name='privs'), eol_))
         if self.gender is not None:
             self.gender.export(outfile, level, namespace_='mmd-2.0:', name_='gender', pretty_print=pretty_print)
         if self.age is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sage>%s</%sage>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.age), input_name='age')), namespace_, eol_))
+            outfile.write('<mmd-2.0:age>%s</mmd-2.0:age>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.age), input_name='age')), eol_))
         if self.homepage is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%shomepage>%s</%shomepage>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.homepage), input_name='homepage')), namespace_, eol_))
+            outfile.write('<mmd-2.0:homepage>%s</mmd-2.0:homepage>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.homepage), input_name='homepage')), eol_))
         if self.bio is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbio>%s</%sbio>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.bio), input_name='bio')), namespace_, eol_))
+            outfile.write('<mmd-2.0:bio>%s</mmd-2.0:bio>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.bio), input_name='bio')), eol_))
         if self.area is not None:
             self.area.export(outfile, level, namespace_='mmd-2.0:', name_='area', pretty_print=pretty_print)
         if self.language_list is not None:
@@ -9493,16 +9499,16 @@ class edit_information(GeneratedsSuper):
             eol_ = ''
         if self.edits_accepted is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sedits-accepted>%s</%sedits-accepted>%s' % (namespace_, self.gds_format_integer(self.edits_accepted, input_name='edits-accepted'), namespace_, eol_))
+            outfile.write('<mmd-2.0:edits-accepted>%s</mmd-2.0:edits-accepted>%s' % (self.gds_format_integer(self.edits_accepted, input_name='edits-accepted'), eol_))
         if self.edits_rejected is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sedits-rejected>%s</%sedits-rejected>%s' % (namespace_, self.gds_format_integer(self.edits_rejected, input_name='edits-rejected'), namespace_, eol_))
+            outfile.write('<mmd-2.0:edits-rejected>%s</mmd-2.0:edits-rejected>%s' % (self.gds_format_integer(self.edits_rejected, input_name='edits-rejected'), eol_))
         if self.auto_edits_accepted is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sauto-edits-accepted>%s</%sauto-edits-accepted>%s' % (namespace_, self.gds_format_integer(self.auto_edits_accepted, input_name='auto-edits-accepted'), namespace_, eol_))
+            outfile.write('<mmd-2.0:auto-edits-accepted>%s</mmd-2.0:auto-edits-accepted>%s' % (self.gds_format_integer(self.auto_edits_accepted, input_name='auto-edits-accepted'), eol_))
         if self.edits_failed is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sedits-failed>%s</%sedits-failed>%s' % (namespace_, self.gds_format_integer(self.edits_failed, input_name='edits-failed'), namespace_, eol_))
+            outfile.write('<mmd-2.0:edits-failed>%s</mmd-2.0:edits-failed>%s' % (self.gds_format_integer(self.edits_failed, input_name='edits-failed'), eol_))
     def to_etree(self, parent_element=None, name_='edit-information', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -9766,7 +9772,7 @@ class release_event(GeneratedsSuper):
             eol_ = ''
         if self.date is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdate>%s</%sdate>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.date), input_name='date')), namespace_, eol_))
+            outfile.write('<mmd-2.0:date>%s</mmd-2.0:date>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.date), input_name='date')), eol_))
         if self.area is not None:
             self.area.export(outfile, level, namespace_='mmd-2.0:', name_='area', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='release-event', mapping_=None):
@@ -10006,7 +10012,7 @@ class medium_list(GeneratedsSuper):
             eol_ = ''
         if self.track_count is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%strack-count>%s</%strack-count>%s' % (namespace_, self.gds_format_integer(self.track_count, input_name='track-count'), namespace_, eol_))
+            outfile.write('<mmd-2.0:track-count>%s</mmd-2.0:track-count>%s' % (self.gds_format_integer(self.track_count, input_name='track-count'), eol_))
         for medium_ in self.medium:
             medium_.export(outfile, level, namespace_='mmd-2.0:', name_='medium', pretty_print=pretty_print)
     def to_etree(self, parent_element=None, name_='medium-list', mapping_=None):
@@ -10822,7 +10828,7 @@ class offset(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -13173,7 +13179,7 @@ class iswc_list(GeneratedsSuper):
             eol_ = ''
         for iswc_ in self.iswc:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%siswc>%s</%siswc>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(iswc_), input_name='iswc')), namespace_, eol_))
+            outfile.write('<mmd-2.0:iswc>%s</mmd-2.0:iswc>%s' % (self.gds_encode(self.gds_format_string(quote_xml(iswc_), input_name='iswc')), eol_))
     def to_etree(self, parent_element=None, name_='iswc-list', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -13994,19 +14000,19 @@ class cover_art_archive(GeneratedsSuper):
             eol_ = ''
         if self.artwork is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartwork>%s</%sartwork>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.artwork), input_name='artwork')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:artwork>%s</mmd-2.0:artwork>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artwork), input_name='artwork')), eol_))
         if self.count is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%scount>%s</%scount>%s' % (namespace_, self.gds_format_integer(self.count, input_name='count'), namespace_, eol_))
+            outfile.write('<mmd-2.0:count>%s</mmd-2.0:count>%s' % (self.gds_format_integer(self.count, input_name='count'), eol_))
         if self.front is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sfront>%s</%sfront>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.front), input_name='front')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:front>%s</mmd-2.0:front>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.front), input_name='front')), eol_))
         if self.back is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sback>%s</%sback>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.back), input_name='back')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:back>%s</mmd-2.0:back>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.back), input_name='back')), eol_))
         if self.darkened is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sdarkened>%s</%sdarkened>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.darkened), input_name='darkened')), namespace_, eol_))
+            outfile.write('<mmd-2.0:darkened>%s</mmd-2.0:darkened>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.darkened), input_name='darkened')), eol_))
     def to_etree(self, parent_element=None, name_='cover-art-archive', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -14438,7 +14444,7 @@ class ipi_list(GeneratedsSuper):
             eol_ = ''
         for ipi_ in self.ipi:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sipi>%s</%sipi>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(ipi_), input_name='ipi')), namespace_, eol_))
+            outfile.write('<mmd-2.0:ipi>%s</mmd-2.0:ipi>%s' % (self.gds_encode(self.gds_format_string(quote_xml(ipi_), input_name='ipi')), eol_))
     def to_etree(self, parent_element=None, name_='ipi-list', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -14744,7 +14750,7 @@ class iso_3166_1_code_list(GeneratedsSuper):
             eol_ = ''
         for iso_3166_1_code_ in self.iso_3166_1_code:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%siso-3166-1-code>%s</%siso-3166-1-code>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(iso_3166_1_code_), input_name='iso-3166-1-code')), namespace_, eol_))
+            outfile.write('<mmd-2.0:iso-3166-1-code>%s</mmd-2.0:iso-3166-1-code>%s' % (self.gds_encode(self.gds_format_string(quote_xml(iso_3166_1_code_), input_name='iso-3166-1-code')), eol_))
     def to_etree(self, parent_element=None, name_='iso-3166-1-code-list', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -14843,7 +14849,7 @@ class iso_3166_2_code_list(GeneratedsSuper):
             eol_ = ''
         for iso_3166_2_code_ in self.iso_3166_2_code:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%siso-3166-2-code>%s</%siso-3166-2-code>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(iso_3166_2_code_), input_name='iso-3166-2-code')), namespace_, eol_))
+            outfile.write('<mmd-2.0:iso-3166-2-code>%s</mmd-2.0:iso-3166-2-code>%s' % (self.gds_encode(self.gds_format_string(quote_xml(iso_3166_2_code_), input_name='iso-3166-2-code')), eol_))
     def to_etree(self, parent_element=None, name_='iso-3166-2-code-list', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -14942,7 +14948,7 @@ class iso_3166_3_code_list(GeneratedsSuper):
             eol_ = ''
         for iso_3166_3_code_ in self.iso_3166_3_code:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%siso-3166-3-code>%s</%siso-3166-3-code>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(iso_3166_3_code_), input_name='iso-3166-3-code')), namespace_, eol_))
+            outfile.write('<mmd-2.0:iso-3166-3-code>%s</mmd-2.0:iso-3166-3-code>%s' % (self.gds_encode(self.gds_format_string(quote_xml(iso_3166_3_code_), input_name='iso-3166-3-code')), eol_))
     def to_etree(self, parent_element=None, name_='iso-3166-3-code-list', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -15101,7 +15107,7 @@ class attributeType(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -15122,6 +15128,7 @@ class attributeType(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType'):
         if self.type_ is not None and 'type_' not in already_processed:
@@ -15254,10 +15261,10 @@ class life_spanType(GeneratedsSuper):
             eol_ = ''
         if self.begin is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbegin>%s</%sbegin>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), namespace_, eol_))
+            outfile.write('<mmd-2.0:begin>%s</mmd-2.0:begin>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), eol_))
         if self.end is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%send>%s</%send>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), namespace_, eol_))
+            outfile.write('<mmd-2.0:end>%s</mmd-2.0:end>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), eol_))
     def to_etree(self, parent_element=None, name_='life-spanType', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -15423,7 +15430,7 @@ class attributeType2(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -15444,6 +15451,7 @@ class attributeType2(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType2')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType2'):
         if self.value is not None and 'value' not in already_processed:
@@ -15913,13 +15921,13 @@ class trackType(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
     def to_etree(self, parent_element=None, name_='trackType', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -15992,7 +16000,7 @@ class languageType(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -16363,13 +16371,13 @@ class trackType7(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
     def to_etree(self, parent_element=None, name_='trackType7', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -16544,7 +16552,7 @@ class attributeType9(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -16565,6 +16573,7 @@ class attributeType9(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType9')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType9'):
         if self.value is not None and 'value' not in already_processed:
@@ -16748,7 +16757,7 @@ class attributeType11(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -16769,6 +16778,7 @@ class attributeType11(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType11')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType11'):
         if self.type_ is not None and 'type_' not in already_processed:
@@ -16961,7 +16971,7 @@ class attributeType13(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -16982,6 +16992,7 @@ class attributeType13(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType13')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType13'):
         if self.type_ is not None and 'type_' not in already_processed:
@@ -17114,10 +17125,10 @@ class life_spanType14(GeneratedsSuper):
             eol_ = ''
         if self.begin is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sbegin>%s</%sbegin>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), namespace_, eol_))
+            outfile.write('<mmd-2.0:begin>%s</mmd-2.0:begin>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.begin), input_name='begin')), eol_))
         if self.end is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%send>%s</%send>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), namespace_, eol_))
+            outfile.write('<mmd-2.0:end>%s</mmd-2.0:end>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.end), input_name='end')), eol_))
     def to_etree(self, parent_element=None, name_='life-spanType14', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -17283,7 +17294,7 @@ class attributeType16(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -17304,6 +17315,7 @@ class attributeType16(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType16')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType16'):
         if self.value is not None and 'value' not in already_processed:
@@ -17773,13 +17785,13 @@ class trackType20(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
     def to_etree(self, parent_element=None, name_='trackType20', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -17852,7 +17864,7 @@ class languageType21(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -18223,13 +18235,13 @@ class trackType24(GeneratedsSuper):
             eol_ = ''
         if self.title is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%stitle>%s</%stitle>%s' % ('mmd-2.0:', self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), 'mmd-2.0:', eol_))
+            outfile.write('<mmd-2.0:title>%s</mmd-2.0:title>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.title), input_name='title')), eol_))
         if self.artist is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%sartist>%s</%sartist>%s' % (namespace_, self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), namespace_, eol_))
+            outfile.write('<mmd-2.0:artist>%s</mmd-2.0:artist>%s' % (self.gds_encode(self.gds_format_string(quote_xml(self.artist), input_name='artist')), eol_))
         if self.length is not None:
             showIndent(outfile, level, pretty_print)
-            outfile.write('<%slength>%s</%slength>%s' % (namespace_, self.gds_format_integer(self.length, input_name='length'), namespace_, eol_))
+            outfile.write('<mmd-2.0:length>%s</mmd-2.0:length>%s' % (self.gds_format_integer(self.length, input_name='length'), eol_))
     def to_etree(self, parent_element=None, name_='trackType24', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -18404,7 +18416,7 @@ class attributeType26(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -18425,6 +18437,7 @@ class attributeType26(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType26')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType26'):
         if self.value is not None and 'value' not in already_processed:
@@ -18608,7 +18621,7 @@ class attributeType28(GeneratedsSuper):
     def set_valueOf_(self, valueOf_): self.valueOf_ = valueOf_
     def hasContent_(self):
         if (
-            1 if type(self.valueOf_) in [int,float] else self.valueOf_
+            (1 if type(self.valueOf_) in [int,float] else self.valueOf_)
         ):
             return True
         else:
@@ -18629,6 +18642,7 @@ class attributeType28(GeneratedsSuper):
         self.exportAttributes(outfile, level, already_processed, namespace_, name_='attributeType28')
         outfile.write('>')
         self.exportChildren(outfile, level + 1, namespace_, name_, pretty_print=pretty_print)
+        outfile.write(self.convert_unicode(self.valueOf_))
         outfile.write('</%s%s>%s' % (namespace_, name_, eol_))
     def exportAttributes(self, outfile, level, already_processed, namespace_='mmd-2.0:', name_='attributeType28'):
         if self.type_ is not None and 'type_' not in already_processed:
@@ -18694,15 +18708,13 @@ class attributeType28(GeneratedsSuper):
 
 GDSClassesMapping = {
     'area': def_area_element_inner,
-    'attribute': attributeType28,
-    'attribute-list': attribute_listType15,
+    'area': def_area_element_inner,
+    'begin-area': def_area_element_inner,
     'begin-area': def_area_element_inner,
     'end-area': def_area_element_inner,
-    'language': languageType21,
-    'life-span': life_spanType14,
+    'end-area': def_area_element_inner,
     'pregap': def_track_data,
-    'track': trackType24,
-    'track-list': track_listType19,
+    'pregap': def_track_data,
 }
 
 

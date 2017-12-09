@@ -32,7 +32,7 @@ def update_version_py():
     if p.returncode != 0:
         print("unable to run git, leaving mbrng/__init__.py alone")
         return
-    ver = stdout.strip()
+    ver = stdout.strip().decode()
     f = open("mbrng/__init__.py", "w")
     f.write(VERSION_PY % ver)
     f.close()
@@ -42,7 +42,7 @@ def update_version_py():
 def get_version():
     try:
         f = open("mbrng/__init__.py")
-    except IOError, e:
+    except (IOError) as e:
         import errno
         if e.errno == errno.ENOENT:
             update_version_py()
