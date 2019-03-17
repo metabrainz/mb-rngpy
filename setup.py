@@ -1,6 +1,8 @@
 #!/usr/bin/env python2
 from __future__ import print_function
-import os, subprocess, re
+import os
+import re
+import subprocess
 from distutils.core import setup, Command
 from distutils.command.sdist import sdist as _sdist
 from distutils.command.build import build as _build
@@ -35,17 +37,17 @@ def update_version_py():
     if p.returncode != 0:
         print("unable to run git, leaving mbrng/__init__.py alone")
         return
-    ver = stdout.strip()
+    version = stdout.strip()
     f = open("mbrng/__init__.py", "w")
-    f.write(VERSION_PY % ver)
+    f.write(VERSION_PY % version)
     f.close()
-    print("set mbrng/__init__.py to '%s'" % ver)
+    print("set mbrng/__init__.py to '%s'" % version)
 
 
 def get_version():
     try:
         f = open("mbrng/__init__.py")
-    except IOError, e:
+    except IOError as e:
         import errno
         if e.errno == errno.ENOENT:
             update_version_py()
@@ -55,8 +57,8 @@ def get_version():
     for line in f.readlines():
         mo = re.match("__version__ = '([^']+)'", line)
         if mo:
-            ver = mo.group(1)
-            return ver
+            version = mo.group(1)
+            return version
     return None
 
 
