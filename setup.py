@@ -105,6 +105,8 @@ setup(name="mb-rngpy",
                    "License :: OSI Approved :: MIT License",
                    "Natural Language :: English",
                    "Operating System :: OS Independent",
-                   "Programming Language :: Python :: 2.7"],
+                   "Programming Language :: Python :: 2.7",
+                   "Topic :: Software Development :: Libraries "
+                   ":: Python Modules"],
       cmdclass={"version": Version, "sdist": sdist, "build": build}
       )
