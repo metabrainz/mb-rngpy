@@ -5,6 +5,9 @@ from distutils.core import setup, Command
 from distutils.command.sdist import sdist as _sdist
 from distutils.command.build import build as _build
 
+REPOSITORY_URL = "https://github.com/mineo/mb-rngpy"
+DOWNLOAD_URL = "{url}/archive/v-{version}.tar.gz"
+
 # The following code is taken from
 # https://github.com/warner/python-ecdsa/blob/f03abf93968019758c6e00753d1b34b87fecd27e/setup.py
 # which is released under the MIT license (see LICENSE for the full license
@@ -92,14 +95,19 @@ class build(_build):
 
 # Here ends the code taken from Brian Warner
 
+
+def download_url(version):
+    return DOWNLOAD_URL.format(url=REPOSITORY_URL, version=version)
+
+
 setup(name="mb-rngpy",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
       packages=["mbrng"],
       package_dir={"mbrng": "mbrng"},
-      download_url=["https://github.com/mineo/mb-rngpy/tarball/master"],
-      url=["http://github.com/mineo/mb-rngpy"],
+      download_url=download_url(get_version()),
+      url=REPOSITORY_URL,
       license="MIT",
       classifiers=["Development Status :: 5 - Production/Stable",
                    "License :: OSI Approved :: MIT License",
