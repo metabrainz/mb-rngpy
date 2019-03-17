@@ -27,5 +27,5 @@ pip install -r requirements.txt
 To update the model to a new schema simply run
 
 ```bash
-make mbrng/models.py
+make clean && make
 ```
