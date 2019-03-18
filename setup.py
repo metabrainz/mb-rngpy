@@ -25,19 +25,30 @@ __version__ = '%s'
 def update_version_py():
     if not os.path.isdir(".git"):
         print("This does not appear to be a Git repository.")
+        write_init_py()
         return
     try:
         p = subprocess.Popen(["git", "describe",
                               "--tags", "--dirty", "--always"],
                              stdout=subprocess.PIPE)
     except EnvironmentError:
-        print("unable to run git, leaving mbrng/__init__.py alone")
+        print("Unable to run git.")
+        write_init_py()
         return
     stdout = p.communicate()[0]
     if p.returncode != 0:
-        print("unable to run git, leaving mbrng/__init__.py alone")
+        print("Running git failed.")
+        write_init_py()
         return
     version = stdout.strip()
+    write_init_py(version)
+
+
+def write_init_py(version="unknown"):
+    path = "mbrng/__init__.py"
+    if version == "unknown" and os.path.isfile(path):
+        print("Skip erasing version in '{path}'.".format(path=path))
+        return
     f = open("mbrng/__init__.py", "w")
     f.write(VERSION_PY % version)
     f.close()
