@@ -41,6 +41,8 @@ def update_version_py():
         write_init_py()
         return
     version = stdout.strip()
+    if version.startswith('v-'):
+        version = version[2:]
     write_init_py(version)
 
 
