@@ -9,6 +9,7 @@ from distutils.command.build import build as _build
 
 REPOSITORY_URL = "https://github.com/metabrainz/mb-rngpy"
 DOWNLOAD_URL = "{url}/archive/v-{version}.tar.gz"
+VERSION_PATH = "mbrng/__init__.py"
 
 # The following code is taken from
 # https://github.com/warner/python-ecdsa/blob/f03abf93968019758c6e00753d1b34b87fecd27e/setup.py
@@ -47,19 +48,20 @@ def update_version_py():
 
 
 def write_init_py(version="unknown"):
-    path = "mbrng/__init__.py"
-    if version == "unknown" and os.path.isfile(path):
-        print("Skip erasing version in '{path}'.".format(path=path))
+    if version == "unknown" and os.path.isfile(VERSION_PATH):
+        print("Skip erasing version in '{path}'.".format(
+            path=VERSION_PATH))
         return
-    f = open("mbrng/__init__.py", "w")
+    f = open(VERSION_PATH, "w")
     f.write(VERSION_PY % version)
     f.close()
-    print("set mbrng/__init__.py to '%s'" % version)
+    print("Set version to '{version}' in '{path}'.".format(
+        path=VERSION_PATH, version=version))
 
 
 def get_version():
     try:
-        f = open("mbrng/__init__.py")
+        f = open(VERSION_PATH)
     except IOError as e:
         import errno
         if e.errno == errno.ENOENT:
@@ -76,7 +78,8 @@ def get_version():
 
 
 class Version(Command):
-    description = "update mbrng/__init__.py from Git repo"
+    description = "Update '{path}' from Git repository.".format(
+            path=VERSION_PATH)
     user_options = []
     boolean_options = []
 
@@ -88,7 +91,7 @@ class Version(Command):
 
     def run(self):
         update_version_py()
-        print("Version is now", get_version())
+        print("Version is now '{0}'.".format(get_version()))
 
 
 class sdist(_sdist):
