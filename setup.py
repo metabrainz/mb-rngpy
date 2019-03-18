@@ -104,6 +104,10 @@ setup(name="mb-rngpy",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
+      description="Python bindings for the"
+                  "MusicBrainz XML Metadata RELAX NG schema",
+      long_description="Python bindings for the "
+                       "MusicBrainz XML Metadata RELAX NG schema",
       packages=["mbrng"],
       package_dir={"mbrng": "mbrng"},
       download_url=download_url(get_version()),
