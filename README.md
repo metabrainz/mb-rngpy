@@ -24,38 +24,27 @@ Report issues at https://tickets.metabrainz.org/secure/CreateIssue!default.jspa?
 Please install the following programs:
 
 * [Trang](https://github.com/relaxng/jing-trang/releases)
-* [Virtualenv](https://virtualenv.pypa.io/en/latest/)
+* [Twine](https://twine.readthedocs.io/) to upload to PyPI
+* [Virtualenv](https://virtualenv.pypa.io/) for Python 2.7
 
 If you are on Ubuntu/Debian you can install these via:
 ```bash
-sudo apt-get install trang python-virtualenv
+sudo apt-get install trang twine python-virtualenv
 ```
 
-Additional requirements are Python packages:
+Make sure you have:
+* Git credentials for remote `origin`
+* GPG private signing key `CE33CF04`
+* PyPI credentials in `~/.pypirc`
 
-* [generateDS](http://www.davekuhlman.org/generateDS.html)
-* [lxml](https://lxml.de/) (required for generateDS)
+### Updating and pushing to Git and PyPI
 
-These can be installed in virtual environment via:
+Finall run
 ```bash
-virtualenv venv
-source venv/bin/activate
-pip install -r requirements.txt
+./update.sh
 ```
 
-### Updating the schema
-
-```bash
-cd mmd-schema
-git pull origin production
-cd ..
-```
-
-### Generating the files
-
-To update the model to a new schema simply run
-```bash
-make clean && make
-```
-
-It also (re)generates `mbrng/__init__.py` with git-described version.
+It will create a virtual environment with Python 2.7 and package
+[generateDS](http://www.davekuhlman.org/generateDS.html), update the
+schema, regenerate the files, commit and tag changes with Git, push
+commits and tags with Git, build Python package and push it to PyPI.
