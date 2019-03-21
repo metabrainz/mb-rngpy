@@ -1,9 +1,15 @@
 #!/usr/bin/env python2
 from __future__ import print_function
-import os, subprocess, re
+import os
+import re
+import subprocess
 from distutils.core import setup, Command
 from distutils.command.sdist import sdist as _sdist
 from distutils.command.build import build as _build
+
+REPOSITORY_URL = "https://github.com/metabrainz/mb-rngpy"
+DOWNLOAD_URL = "{url}/archive/v-{version}.tar.gz"
+VERSION_PATH = "mbrng/__init__.py"
 
 # The following code is taken from
 # https://github.com/warner/python-ecdsa/blob/f03abf93968019758c6e00753d1b34b87fecd27e/setup.py
@@ -20,29 +26,43 @@ __version__ = '%s'
 def update_version_py():
     if not os.path.isdir(".git"):
         print("This does not appear to be a Git repository.")
+        write_init_py()
         return
     try:
         p = subprocess.Popen(["git", "describe",
                               "--tags", "--dirty", "--always"],
                              stdout=subprocess.PIPE)
     except EnvironmentError:
-        print("unable to run git, leaving mbrng/__init__.py alone")
+        print("Unable to run git.")
+        write_init_py()
         return
     stdout = p.communicate()[0]
     if p.returncode != 0:
-        print("unable to run git, leaving mbrng/__init__.py alone")
+        print("Running git failed.")
+        write_init_py()
         return
-    ver = stdout.strip()
-    f = open("mbrng/__init__.py", "w")
-    f.write(VERSION_PY % ver)
+    version = stdout.strip()
+    if version.startswith('v-'):
+        version = version[2:]
+    write_init_py(version)
+
+
+def write_init_py(version="unknown"):
+    if version == "unknown" and os.path.isfile(VERSION_PATH):
+        print("Skip erasing version in '{path}'.".format(
+            path=VERSION_PATH))
+        return
+    f = open(VERSION_PATH, "w")
+    f.write(VERSION_PY % version)
     f.close()
-    print("set mbrng/__init__.py to '%s'" % ver)
+    print("Set version to '{version}' in '{path}'.".format(
+        path=VERSION_PATH, version=version))
 
 
 def get_version():
     try:
-        f = open("mbrng/__init__.py")
-    except IOError, e:
+        f = open(VERSION_PATH)
+    except IOError as e:
         import errno
         if e.errno == errno.ENOENT:
             update_version_py()
@@ -52,13 +72,14 @@ def get_version():
     for line in f.readlines():
         mo = re.match("__version__ = '([^']+)'", line)
         if mo:
-            ver = mo.group(1)
-            return ver
+            version = mo.group(1)
+            return version
     return None
 
 
 class Version(Command):
-    description = "update mbrng/__init__.py from Git repo"
+    description = "Update '{path}' from Git repository.".format(
+            path=VERSION_PATH)
     user_options = []
     boolean_options = []
 
@@ -70,7 +91,7 @@ class Version(Command):
 
     def run(self):
         update_version_py()
-        print("Version is now", get_version())
+        print("Version is now '{0}'.".format(get_version()))
 
 
 class sdist(_sdist):
@@ -92,19 +113,31 @@ class build(_build):
 
 # Here ends the code taken from Brian Warner
 
+
+def download_url(version):
+    return DOWNLOAD_URL.format(url=REPOSITORY_URL, version=version)
+
+
 setup(name="mb-rngpy",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
+      description="Python bindings for the"
+                  "MusicBrainz XML Metadata RELAX NG schema",
+      long_description="Python bindings for the "
+                       "MusicBrainz XML Metadata RELAX NG schema",
       packages=["mbrng"],
       package_dir={"mbrng": "mbrng"},
-      download_url=["https://github.com/mineo/mb-rngpy/tarball/master"],
-      url=["http://github.com/mineo/mb-rngpy"],
+      install_requires=["lxml"],
+      download_url=download_url(get_version()),
+      url=REPOSITORY_URL,
       license="MIT",
-      classifiers=["Development Status :: 4 - Beta",
+      classifiers=["Development Status :: 5 - Production/Stable",
                    "License :: OSI Approved :: MIT License",
                    "Natural Language :: English",
                    "Operating System :: OS Independent",
-                   "Programming Language :: Python :: 2.7"],
+                   "Programming Language :: Python :: 2.7",
+                   "Topic :: Software Development :: Libraries "
+                   ":: Python Modules"],
       cmdclass={"version": Version, "sdist": sdist, "build": build}
       )
