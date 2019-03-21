@@ -123,7 +123,7 @@ setup(name="mb-rngpy",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
-      description="Python bindings for the"
+      description="Python bindings for the "
                   "MusicBrainz XML Metadata RELAX NG schema",
       long_description="Python bindings for the "
                        "MusicBrainz XML Metadata RELAX NG schema",
