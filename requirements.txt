@@ -1,2 +1,2 @@
-lxml
-generateDS
+lxml==4.3.2
+generateDS==2.30.11
