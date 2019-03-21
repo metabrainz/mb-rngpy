@@ -119,6 +119,7 @@ def download_url(version):
 
 
 setup(name="mb-rngpy",
+      python_requires="~=2.7",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
