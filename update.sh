@@ -24,22 +24,19 @@ then
     exit 69
   fi
 else
-  if type python2 &>/dev/null
+  if type python3 &>/dev/null
   then
-    python_command=python2
-  elif type python &>/dev/null
-  then
-    python_command=python
+    python_command=python3
   else
-    echo Error: python command not found
+    echo Error: python3 command not found , please install python3 or create a virtual env with python3
     echo $usage
     exit 69
   fi
 fi
 
-if [[ `$python_command --version` =~ "Python 2." ]]
+if [[ `$python_command --version` =~ "Python 3." ]]
 then
-  echo Error: $python_command is not Python 2.x
+  echo Error: $python_command is not Python 3.x
   echo $usage
   exit 69
 fi

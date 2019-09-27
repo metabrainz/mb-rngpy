@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Thu Mar 21 15:33:07 2019 by generateDS.py version 2.30.11.
-# Python 2.7.16 (default, Mar 11 2019, 18:59:25)  [GCC 8.2.1 20181127]
+# Generated Mon Sep 30 22:39:40 2019 by generateDS.py version 2.30.11.
+# Python 3.6.8 (default, Aug 20 2019, 17:12:48)  [GCC 8.3.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -15,7 +15,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /home/yvanzo/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /media/p23/61B6BE4D59DAB3B6/workshop/metabrainz/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy

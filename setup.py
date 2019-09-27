@@ -1,5 +1,4 @@
-#!/usr/bin/env python2
-from __future__ import print_function
+#!/usr/bin/env python3
 import os
 import re
 import subprocess
@@ -119,7 +118,7 @@ def download_url(version):
 
 
 setup(name="mb-rngpy",
-      python_requires="~=2.7",
+      python_requires=">=3",
       version=get_version(),
       author="Wieland Hoffmann",
       author_email="themineo@gmail.com",
@@ -137,7 +136,7 @@ setup(name="mb-rngpy",
                    "License :: OSI Approved :: MIT License",
                    "Natural Language :: English",
                    "Operating System :: OS Independent",
-                   "Programming Language :: Python :: 2.7",
+                   "Programming Language :: Python :: 3",
                    "Topic :: Software Development :: Libraries "
                    ":: Python Modules"],
       cmdclass={"version": Version, "sdist": sdist, "build": build}
