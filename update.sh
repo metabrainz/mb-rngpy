@@ -88,6 +88,12 @@ git commit mbrng/ musicbrainz_mmd.xsd \
   -m "Regenerate everything with mmd-schema $mmd_schema_version"
 
 ################################################################################
+echo Testing
+
+pip install -r requirements-test.txt -U
+python -m pytest
+
+################################################################################
 echo Creating git tag
 
 minor=`echo "$mmd_schema_version" \

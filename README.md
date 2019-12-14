@@ -46,5 +46,6 @@ Finall run
 
 It will create a virtual environment with the packages lxml and
 [generateDS](http://www.davekuhlman.org/generateDS.html), update the
-schema, regenerate the files, commit and tag changes with Git, push
-commits and tags with Git, build Python package and push it to PyPI.
+schema, regenerate the files, test, commit and tag changes with Git,
+push commits and tags with Git, build Python package and push it to
+PyPI.
