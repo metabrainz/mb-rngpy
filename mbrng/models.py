@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Thu Mar 21 15:33:06 2019 by generateDS.py version 2.30.11.
-# Python 2.7.16 (default, Mar 11 2019, 18:59:25)  [GCC 8.2.1 20181127]
+# Generated Mon Sep 30 22:39:38 2019 by generateDS.py version 2.30.11.
+# Python 3.6.8 (default, Aug 20 2019, 17:12:48)  [GCC 8.3.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -16,7 +16,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /home/yvanzo/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /media/p23/61B6BE4D59DAB3B6/workshop/metabrainz/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -3643,7 +3643,7 @@ class text_representation(GeneratedsSuper):
             if not self.gds_validate_simple_patterns(
                     self.validate_def_iso_639_patterns_, value):
                 warnings_.warn('Value "%s" does not match xsd pattern restrictions: %s' % (value.encode('utf-8'), self.validate_def_iso_639_patterns_, ))
-    validate_def_iso_639_patterns_ = [[u'^[a-z]{3}$']]
+    validate_def_iso_639_patterns_ = [['^[a-z]{3}$']]
     def hasContent_(self):
         if (
             self.language is not None or
@@ -5553,7 +5553,7 @@ class work(GeneratedsSuper):
             if not self.gds_validate_simple_patterns(
                     self.validate_def_iso_639_patterns_, value):
                 warnings_.warn('Value "%s" does not match xsd pattern restrictions: %s' % (value.encode('utf-8'), self.validate_def_iso_639_patterns_, ))
-    validate_def_iso_639_patterns_ = [[u'^[a-z]{3}$']]
+    validate_def_iso_639_patterns_ = [['^[a-z]{3}$']]
     def validate_iswc(self, value):
         # Validate type iswc, a restriction on xs:token.
         pass

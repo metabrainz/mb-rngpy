@@ -9,7 +9,7 @@ You can install `mb-rngpy` from [PyPI](https://pypi.org/project/mb-rngpy/) via:
 pip install mb-rngpy
 ```
 
-It is supported on Python 2.7 only.
+It is supported on Python 3 only.
 
 ## Community
 
@@ -25,7 +25,7 @@ Please install the following programs:
 
 * [Trang](https://github.com/relaxng/jing-trang/releases)
 * [Twine](https://twine.readthedocs.io/) to upload to PyPI
-* [Virtualenv](https://virtualenv.pypa.io/) for Python 2.7
+* [Virtualenv](https://virtualenv.pypa.io/) to create a virtual environment
 
 If you are on Ubuntu/Debian you can install these via:
 ```bash
@@ -44,7 +44,8 @@ Finall run
 ./update.sh
 ```
 
-It will create a virtual environment with Python 2.7 and package
+It will create a virtual environment with the packages lxml and
 [generateDS](http://www.davekuhlman.org/generateDS.html), update the
-schema, regenerate the files, commit and tag changes with Git, push
-commits and tags with Git, build Python package and push it to PyPI.
+schema, regenerate the files, test, commit and tag changes with Git,
+push commits and tags with Git, build Python package and push it to
+PyPI.

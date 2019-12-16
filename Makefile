@@ -3,7 +3,7 @@
 all: mbrng/__init__.py mbrng/models.py
 
 mbrng/__init__.py:
-	python setup.py version
+	python3 setup.py version
 
 mbrng/models.py: musicbrainz_mmd.xsd
 	generateDS.py -o $@ -s mbrng/mb_mmd_subs.py --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
