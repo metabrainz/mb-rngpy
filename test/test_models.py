@@ -27,3 +27,29 @@ def test_packaging():
         actual_model.to_etree(),
         ElementTree.fromstring(expected_xml_string),
     )
+
+
+def test_work():
+    actual_model = models.work(
+        id='6581bec7-e5f7-42c4-a7c3-3314b5db3a38',
+        iswc='T-924.455.123-3',
+        language='eng',
+        title='Ahead of Ourselves',
+        type_='Song',
+        type_id='f061270a-2fd6-32f1-a641-f0f8676d14e6',
+    )
+    expected_xml_string = '''
+    <work id="6581bec7-e5f7-42c4-a7c3-3314b5db3a38"
+          type="Song"
+          type-id="f061270a-2fd6-32f1-a641-f0f8676d14e6"
+          xmlns="http://musicbrainz.org/ns/mmd-2.0#"
+    >
+      <title>Ahead of Ourselves</title>
+      <language>eng</language>
+      <iswc>T-924.455.123-3</iswc>
+    </work>
+    '''
+    assert xml_elements_equal(
+        actual_model.to_etree(),
+        ElementTree.fromstring(expected_xml_string),
+    )
