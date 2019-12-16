@@ -40,7 +40,7 @@ def update_version_py():
         print("Running git failed.")
         write_init_py()
         return
-    version = stdout.strip()
+    version = stdout.decode('utf-8').strip()
     if version.startswith('v-'):
         version = version[2:]
     write_init_py(version)
