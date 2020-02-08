@@ -34,7 +34,7 @@ else
   fi
 fi
 
-if [[ `$python_command --version` =~ "Python 3." ]]
+if [[ ! `$python_command --version` =~ "Python 3." ]]
 then
   echo Error: $python_command is not Python 3.x
   echo $usage
