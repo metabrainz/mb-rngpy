@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Mon Sep 30 22:39:40 2019 by generateDS.py version 2.30.11.
-# Python 3.6.8 (default, Aug 20 2019, 17:12:48)  [GCC 8.3.0]
+# Generated Sat Feb  8 20:51:41 2020 by generateDS.py version 2.30.11.
+# Python 3.8.1 (default, Jan  8 2020, 23:09:20)  [GCC 9.2.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -15,7 +15,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /media/p23/61B6BE4D59DAB3B6/workshop/metabrainz/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /home/yvanzo/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -60,8 +60,8 @@ supermod.def_track_data.subclass = def_track_dataSub
 
 
 class metadataSub(supermod.metadata):
-    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
-        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, url, puid, isrc, disc, cdstub, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, genre_list, user_genre_list, collection_list, editor_list, entity_list, def_extension_element,  **kwargs_)
+    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, genre=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
+        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, genre, url, puid, isrc, disc, cdstub, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, genre_list, user_genre_list, collection_list, editor_list, entity_list, def_extension_element,  **kwargs_)
 supermod.metadata.subclass = metadataSub
 # end class metadataSub
 
@@ -277,15 +277,15 @@ supermod.user_tag.subclass = user_tagSub
 
 
 class genreSub(supermod.genre):
-    def __init__(self, count=None, name=None, **kwargs_):
-        super(genreSub, self).__init__(count, name,  **kwargs_)
+    def __init__(self, count=None, id=None, name=None, disambiguation=None, **kwargs_):
+        super(genreSub, self).__init__(count, id, name, disambiguation,  **kwargs_)
 supermod.genre.subclass = genreSub
 # end class genreSub
 
 
 class user_genreSub(supermod.user_genre):
-    def __init__(self, name=None, **kwargs_):
-        super(user_genreSub, self).__init__(name,  **kwargs_)
+    def __init__(self, id=None, name=None, disambiguation=None, **kwargs_):
+        super(user_genreSub, self).__init__(id, name, disambiguation,  **kwargs_)
 supermod.user_genre.subclass = user_genreSub
 # end class user_genreSub
 

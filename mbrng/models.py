@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Mon Sep 30 22:39:38 2019 by generateDS.py version 2.30.11.
-# Python 3.6.8 (default, Aug 20 2019, 17:12:48)  [GCC 8.3.0]
+# Generated Sat Feb  8 20:51:41 2020 by generateDS.py version 2.30.11.
+# Python 3.8.1 (default, Jan  8 2020, 23:09:20)  [GCC 9.2.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -16,7 +16,7 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /media/p23/61B6BE4D59DAB3B6/workshop/metabrainz/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /home/yvanzo/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
@@ -1290,7 +1290,7 @@ class def_track_data(GeneratedsSuper):
 class metadata(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
+    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, genre=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
         self.generator = _cast(None, generator)
@@ -1310,6 +1310,7 @@ class metadata(GeneratedsSuper):
         self.instrument = instrument
         self.series = series
         self.event = event
+        self.genre = genre
         self.url = url
         self.puid = puid
         self.isrc = isrc
@@ -1398,6 +1399,10 @@ class metadata(GeneratedsSuper):
         return self.event
     def set_event(self, event):
         self.event = event
+    def get_genre(self):
+        return self.genre
+    def set_genre(self, genre):
+        self.genre = genre
     def get_url(self):
         return self.url
     def set_url(self, url):
@@ -1551,6 +1556,7 @@ class metadata(GeneratedsSuper):
             self.instrument is not None or
             self.series is not None or
             self.event is not None or
+            self.genre is not None or
             self.url is not None or
             self.puid is not None or
             self.isrc is not None or
@@ -1643,6 +1649,8 @@ class metadata(GeneratedsSuper):
             self.series.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='series', pretty_print=pretty_print)
         if self.event is not None:
             self.event.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='event', pretty_print=pretty_print)
+        if self.genre is not None:
+            self.genre.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='genre', pretty_print=pretty_print)
         if self.url is not None:
             self.url.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='url', pretty_print=pretty_print)
         if self.puid is not None:
@@ -1753,6 +1761,9 @@ class metadata(GeneratedsSuper):
         if self.event is not None:
             event_ = self.event
             event_.to_etree(element, name_='event', mapping_=mapping_)
+        if self.genre is not None:
+            genre_ = self.genre
+            genre_.to_etree(element, name_='genre', mapping_=mapping_)
         if self.url is not None:
             url_ = self.url
             url_.to_etree(element, name_='url', mapping_=mapping_)
@@ -1930,6 +1941,11 @@ class metadata(GeneratedsSuper):
             obj_.build(child_)
             self.event = obj_
             obj_.original_tagname_ = 'event'
+        elif nodeName_ == 'genre':
+            obj_ = genre.factory(parent_object_=self)
+            obj_.build(child_)
+            self.genre = obj_
+            obj_.original_tagname_ = 'genre'
         elif nodeName_ == 'url':
             obj_ = url.factory(parent_object_=self)
             obj_.build(child_)
@@ -9079,11 +9095,13 @@ class user_tag(GeneratedsSuper):
 class genre(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, count=None, name=None, **kwargs_):
+    def __init__(self, count=None, id=None, name=None, disambiguation=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
         self.count = _cast(int, count)
+        self.id = _cast(None, id)
         self.name = name
+        self.disambiguation = disambiguation
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -9099,13 +9117,22 @@ class genre(GeneratedsSuper):
         return self.name
     def set_name(self, name):
         self.name = name
+    def get_disambiguation(self):
+        return self.disambiguation
+    def set_disambiguation(self, disambiguation):
+        self.disambiguation = disambiguation
     def get_count(self):
         return self.count
     def set_count(self, count):
         self.count = count
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def hasContent_(self):
         if (
-            self.name is not None
+            self.name is not None or
+            self.disambiguation is not None
         ):
             return True
         else:
@@ -9135,6 +9162,9 @@ class genre(GeneratedsSuper):
         if self.count is not None and 'count' not in already_processed:
             already_processed.add('count')
             outfile.write(' count="%s"' % self.gds_format_integer(self.count, input_name='count'))
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (quote_attrib(self.id), ))
     def exportChildren(self, outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#"', name_='genre', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -9143,6 +9173,9 @@ class genre(GeneratedsSuper):
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sname>%s</%sname>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespaceprefix_ , eol_))
+        if self.disambiguation is not None:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespaceprefix_ , eol_))
     def to_etree(self, parent_element=None, name_='genre', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
@@ -9150,9 +9183,14 @@ class genre(GeneratedsSuper):
             element = etree_.SubElement(parent_element, '{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
         if self.count is not None:
             element.set('count', self.gds_format_integer(self.count))
+        if self.id is not None:
+            element.set('id', self.id)
         if self.name is not None:
             name_ = self.name
             etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}name').text = self.gds_format_string(name_)
+        if self.disambiguation is not None:
+            disambiguation_ = self.disambiguation
+            etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}disambiguation').text = self.gds_format_string(disambiguation_)
         if mapping_ is not None:
             mapping_[id(self)] = element
         return element
@@ -9173,21 +9211,31 @@ class genre(GeneratedsSuper):
                 raise_parse_error(node, 'Bad integer attribute: %s' % exp)
             if self.count < 0:
                 raise_parse_error(node, 'Invalid NonNegativeInteger')
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'name':
             name_ = child_.text
             name_ = self.gds_validate_string(name_, node, 'name')
             self.name = name_
+        elif nodeName_ == 'disambiguation':
+            disambiguation_ = child_.text
+            disambiguation_ = self.gds_validate_string(disambiguation_, node, 'disambiguation')
+            self.disambiguation = disambiguation_
 # end class genre
 
 
 class user_genre(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, name=None, **kwargs_):
+    def __init__(self, id=None, name=None, disambiguation=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
+        self.id = _cast(None, id)
         self.name = name
+        self.disambiguation = disambiguation
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
             subclass = getSubclassFromModule_(
@@ -9203,9 +9251,18 @@ class user_genre(GeneratedsSuper):
         return self.name
     def set_name(self, name):
         self.name = name
+    def get_disambiguation(self):
+        return self.disambiguation
+    def set_disambiguation(self, disambiguation):
+        self.disambiguation = disambiguation
+    def get_id(self):
+        return self.id
+    def set_id(self, id):
+        self.id = id
     def hasContent_(self):
         if (
-            self.name is not None
+            self.name is not None or
+            self.disambiguation is not None
         ):
             return True
         else:
@@ -9232,7 +9289,9 @@ class user_genre(GeneratedsSuper):
         else:
             outfile.write('/>%s' % (eol_, ))
     def exportAttributes(self, outfile, level, already_processed, namespaceprefix_='mmd-2.0:', name_='user-genre'):
-        pass
+        if self.id is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            outfile.write(' id=%s' % (quote_attrib(self.id), ))
     def exportChildren(self, outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='xmlns:mmd-2.0="http://musicbrainz.org/ns/mmd-2.0#"', name_='user-genre', fromsubclass_=False, pretty_print=True):
         if pretty_print:
             eol_ = '\n'
@@ -9241,14 +9300,22 @@ class user_genre(GeneratedsSuper):
         if self.name is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sname>%s</%sname>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.name), input_name='name')), namespaceprefix_ , eol_))
+        if self.disambiguation is not None:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sdisambiguation>%s</%sdisambiguation>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.disambiguation), input_name='disambiguation')), namespaceprefix_ , eol_))
     def to_etree(self, parent_element=None, name_='user-genre', mapping_=None):
         if parent_element is None:
             element = etree_.Element('{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
         else:
             element = etree_.SubElement(parent_element, '{http://musicbrainz.org/ns/mmd-2.0#}' + name_)
+        if self.id is not None:
+            element.set('id', self.id)
         if self.name is not None:
             name_ = self.name
             etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}name').text = self.gds_format_string(name_)
+        if self.disambiguation is not None:
+            disambiguation_ = self.disambiguation
+            etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}disambiguation').text = self.gds_format_string(disambiguation_)
         if mapping_ is not None:
             mapping_[id(self)] = element
         return element
@@ -9260,12 +9327,19 @@ class user_genre(GeneratedsSuper):
             self.buildChildren(child, node, nodeName_)
         return self
     def buildAttributes(self, node, attrs, already_processed):
-        pass
+        value = find_attr_value_('id', node)
+        if value is not None and 'id' not in already_processed:
+            already_processed.add('id')
+            self.id = value
     def buildChildren(self, child_, node, nodeName_, fromsubclass_=False):
         if nodeName_ == 'name':
             name_ = child_.text
             name_ = self.gds_validate_string(name_, node, 'name')
             self.name = name_
+        elif nodeName_ == 'disambiguation':
+            disambiguation_ = child_.text
+            disambiguation_ = self.gds_validate_string(disambiguation_, node, 'disambiguation')
+            self.disambiguation = disambiguation_
 # end class user_genre
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: d358fae6f08309d9f36bf6363051cb8e51d83859 $
+  $Id: 8707e5dbb04e8e282225222457309f222932a8d8 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -37,6 +37,7 @@
         <xs:element minOccurs="0" ref="mmd-2.0:instrument"/>
         <xs:element minOccurs="0" ref="mmd-2.0:series"/>
         <xs:element minOccurs="0" ref="mmd-2.0:event"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:genre"/>
         <xs:element minOccurs="0" ref="mmd-2.0:url"/>
         <xs:element minOccurs="0" ref="mmd-2.0:puid"/>
         <xs:element minOccurs="0" ref="mmd-2.0:isrc"/>
@@ -620,8 +621,10 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
       </xs:sequence>
       <xs:attribute name="count" type="xs:nonNegativeInteger"/>
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_genre-attribute_extension"/>
     </xs:complexType>
   </xs:element>
@@ -629,7 +632,9 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
       </xs:sequence>
+      <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
       <xs:attributeGroup ref="mmd-2.0:def_genre-attribute_extension"/>
     </xs:complexType>
   </xs:element>
