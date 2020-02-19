@@ -4,7 +4,17 @@ Python bindings for the MusicBrainz RNG schema. Required by [sir](https://github
 
 ## Installation
 
-You can install `mb-rngpy` from [PyPI](https://pypi.org/project/mb-rngpy/) via:
+Both [`libxml2`](http://www.xmlsoft.org/) and
+[`libxslt`](http://www.xmlsoft.org/XSLT/) are
+required to install [`lxml`](https://lxml.de/) Python package
+which is imported by `mb-rngpy`.
+
+If you are on Ubuntu/Debian you can install these via:
+```bash
+sudo apt-get install libxml2 libxslt1-dev
+```
+
+Then you can install `mb-rngpy` from [PyPI](https://pypi.org/project/mb-rngpy/) via:
 ```bash
 pip install mb-rngpy
 ```
