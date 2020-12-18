@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Thu Mar 21 15:33:07 2019 by generateDS.py version 2.30.11.
-# Python 2.7.16 (default, Mar 11 2019, 18:59:25)  [GCC 8.2.1 20181127]
+# Generated Fri Dec 18 12:03:54 2020 by generateDS.py version 2.30.11.
+# Python 2.7.18 (default, Sep  5 2020, 11:17:26)  [GCC 10.2.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -60,8 +60,8 @@ supermod.def_track_data.subclass = def_track_dataSub
 
 
 class metadataSub(supermod.metadata):
-    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
-        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, url, puid, isrc, disc, cdstub, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, genre_list, user_genre_list, collection_list, editor_list, entity_list, def_extension_element,  **kwargs_)
+    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, genre=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, edit_note=None, def_extension_element=None, **kwargs_):
+        super(metadataSub, self).__init__(generator, created, artist, release, release_group, recording, label, work, area, place, instrument, series, event, genre, url, puid, isrc, disc, cdstub, rating, user_rating, collection, editor, artist_list, release_list, release_group_list, recording_list, label_list, work_list, area_list, place_list, instrument_list, series_list, event_list, url_list, isrc_list, annotation_list, cdstub_list, freedb_disc_list, tag_list, user_tag_list, genre_list, user_genre_list, collection_list, editor_list, entity_list, edit_note, def_extension_element,  **kwargs_)
 supermod.metadata.subclass = metadataSub
 # end class metadataSub
 
@@ -144,8 +144,8 @@ supermod.secondary_type.subclass = secondary_typeSub
 
 
 class recordingSub(supermod.recording):
-    def __init__(self, id=None, title=None, length=None, annotation=None, disambiguation=None, video=None, artist_credit=None, release_list=None, alias_list=None, puid_list=None, isrc_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, rating=None, user_rating=None, def_extension_element=None, **kwargs_):
-        super(recordingSub, self).__init__(id, title, length, annotation, disambiguation, video, artist_credit, release_list, alias_list, puid_list, isrc_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, rating, user_rating, def_extension_element,  **kwargs_)
+    def __init__(self, id=None, title=None, length=None, annotation=None, disambiguation=None, video=None, artist_credit=None, first_release_date=None, release_list=None, alias_list=None, puid_list=None, isrc_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, rating=None, user_rating=None, def_extension_element=None, **kwargs_):
+        super(recordingSub, self).__init__(id, title, length, annotation, disambiguation, video, artist_credit, first_release_date, release_list, alias_list, puid_list, isrc_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, rating, user_rating, def_extension_element,  **kwargs_)
 supermod.recording.subclass = recordingSub
 # end class recordingSub
 
@@ -277,15 +277,15 @@ supermod.user_tag.subclass = user_tagSub
 
 
 class genreSub(supermod.genre):
-    def __init__(self, count=None, name=None, **kwargs_):
-        super(genreSub, self).__init__(count, name,  **kwargs_)
+    def __init__(self, count=None, id=None, name=None, disambiguation=None, **kwargs_):
+        super(genreSub, self).__init__(count, id, name, disambiguation,  **kwargs_)
 supermod.genre.subclass = genreSub
 # end class genreSub
 
 
 class user_genreSub(supermod.user_genre):
-    def __init__(self, name=None, **kwargs_):
-        super(user_genreSub, self).__init__(name,  **kwargs_)
+    def __init__(self, id=None, name=None, disambiguation=None, **kwargs_):
+        super(user_genreSub, self).__init__(id, name, disambiguation,  **kwargs_)
 supermod.user_genre.subclass = user_genreSub
 # end class user_genreSub
 
