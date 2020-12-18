@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 #
-# Generated Sat Feb  8 20:51:41 2020 by generateDS.py version 2.30.11.
-# Python 3.8.1 (default, Jan  8 2020, 23:09:20)  [GCC 9.2.0]
+# Generated Fri Dec 18 18:24:29 2020 by generateDS.py version 2.30.11.
+# Python 3.9.0 (default, Oct  7 2020, 23:09:01)  [GCC 10.2.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -1290,7 +1290,7 @@ class def_track_data(GeneratedsSuper):
 class metadata(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, genre=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, def_extension_element=None, **kwargs_):
+    def __init__(self, generator=None, created=None, artist=None, release=None, release_group=None, recording=None, label=None, work=None, area=None, place=None, instrument=None, series=None, event=None, genre=None, url=None, puid=None, isrc=None, disc=None, cdstub=None, rating=None, user_rating=None, collection=None, editor=None, artist_list=None, release_list=None, release_group_list=None, recording_list=None, label_list=None, work_list=None, area_list=None, place_list=None, instrument_list=None, series_list=None, event_list=None, url_list=None, isrc_list=None, annotation_list=None, cdstub_list=None, freedb_disc_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, collection_list=None, editor_list=None, entity_list=None, edit_note=None, def_extension_element=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
         self.generator = _cast(None, generator)
@@ -1343,6 +1343,7 @@ class metadata(GeneratedsSuper):
         self.collection_list = collection_list
         self.editor_list = editor_list
         self.entity_list = entity_list
+        self.edit_note = edit_note
         self.def_extension_element = def_extension_element
     def factory(*args_, **kwargs_):
         if CurrentSubclassModule_ is not None:
@@ -1531,6 +1532,10 @@ class metadata(GeneratedsSuper):
         return self.entity_list
     def set_entity_list(self, entity_list):
         self.entity_list = entity_list
+    def get_edit_note(self):
+        return self.edit_note
+    def set_edit_note(self, edit_note):
+        self.edit_note = edit_note
     def get_def_extension_element(self):
         return self.def_extension_element
     def set_def_extension_element(self, def_extension_element):
@@ -1589,6 +1594,7 @@ class metadata(GeneratedsSuper):
             self.collection_list is not None or
             self.editor_list is not None or
             self.entity_list is not None or
+            self.edit_note is not None or
             self.def_extension_element is not None
         ):
             return True
@@ -1716,6 +1722,9 @@ class metadata(GeneratedsSuper):
             self.editor_list.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='editor-list', pretty_print=pretty_print)
         if self.entity_list is not None:
             self.entity_list.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='entity-list', pretty_print=pretty_print)
+        if self.edit_note is not None:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sedit-note>%s</%sedit-note>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.edit_note), input_name='edit-note')), namespaceprefix_ , eol_))
         if self.def_extension_element is not None:
             showIndent(outfile, level, pretty_print)
             outfile.write('<%sdef_extension_element>%s</%sdef_extension_element>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.def_extension_element), input_name='def_extension_element')), namespaceprefix_ , eol_))
@@ -1860,6 +1869,9 @@ class metadata(GeneratedsSuper):
         if self.entity_list is not None:
             entity_list_ = self.entity_list
             entity_list_.to_etree(element, name_='entity-list', mapping_=mapping_)
+        if self.edit_note is not None:
+            edit_note_ = self.edit_note
+            etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}edit-note').text = self.gds_format_string(edit_note_)
         if self.def_extension_element is not None:
             def_extension_element_ = self.def_extension_element
             etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}def_extension_element').text = self.gds_format_string(def_extension_element_)
@@ -2111,6 +2123,10 @@ class metadata(GeneratedsSuper):
             obj_.build(child_)
             self.entity_list = obj_
             obj_.original_tagname_ = 'entity-list'
+        elif nodeName_ == 'edit-note':
+            edit_note_ = child_.text
+            edit_note_ = self.gds_validate_string(edit_note_, node, 'edit_note')
+            self.edit_note = edit_note_
         elif nodeName_ == 'def_extension_element':
             def_extension_element_ = child_.text
             def_extension_element_ = self.gds_validate_string(def_extension_element_, node, 'def_extension_element')
@@ -4526,7 +4542,7 @@ class secondary_type(GeneratedsSuper):
 class recording(GeneratedsSuper):
     subclass = None
     superclass = None
-    def __init__(self, id=None, title=None, length=None, annotation=None, disambiguation=None, video=None, artist_credit=None, release_list=None, alias_list=None, puid_list=None, isrc_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, rating=None, user_rating=None, def_extension_element=None, **kwargs_):
+    def __init__(self, id=None, title=None, length=None, annotation=None, disambiguation=None, video=None, artist_credit=None, first_release_date=None, release_list=None, alias_list=None, puid_list=None, isrc_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, rating=None, user_rating=None, def_extension_element=None, **kwargs_):
         self.original_tagname_ = None
         self.parent_object_ = kwargs_.get('parent_object_')
         self.id = _cast(None, id)
@@ -4537,6 +4553,7 @@ class recording(GeneratedsSuper):
         self.video = video
         self.validate_video(self.video)
         self.artist_credit = artist_credit
+        self.first_release_date = first_release_date
         self.release_list = release_list
         self.alias_list = alias_list
         self.puid_list = puid_list
@@ -4590,6 +4607,10 @@ class recording(GeneratedsSuper):
         return self.artist_credit
     def set_artist_credit(self, artist_credit):
         self.artist_credit = artist_credit
+    def get_first_release_date(self):
+        return self.first_release_date
+    def set_first_release_date(self, first_release_date):
+        self.first_release_date = first_release_date
     def get_release_list(self):
         return self.release_list
     def set_release_list(self, release_list):
@@ -4669,6 +4690,7 @@ class recording(GeneratedsSuper):
             self.disambiguation is not None or
             self.video is not None or
             self.artist_credit is not None or
+            self.first_release_date is not None or
             self.release_list is not None or
             self.alias_list is not None or
             self.puid_list is not None or
@@ -4731,6 +4753,9 @@ class recording(GeneratedsSuper):
             outfile.write('<%svideo>%s</%svideo>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.video), input_name='video')), namespaceprefix_ , eol_))
         if self.artist_credit is not None:
             self.artist_credit.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='artist-credit', pretty_print=pretty_print)
+        if self.first_release_date is not None:
+            showIndent(outfile, level, pretty_print)
+            outfile.write('<%sfirst-release-date>%s</%sfirst-release-date>%s' % (namespaceprefix_ , self.gds_encode(self.gds_format_string(quote_xml(self.first_release_date), input_name='first-release-date')), namespaceprefix_ , eol_))
         if self.release_list is not None:
             self.release_list.export(outfile, level, namespaceprefix_='mmd-2.0:', namespacedef_='', name_='release-list', pretty_print=pretty_print)
         if self.alias_list is not None:
@@ -4782,6 +4807,9 @@ class recording(GeneratedsSuper):
         if self.artist_credit is not None:
             artist_credit_ = self.artist_credit
             artist_credit_.to_etree(element, name_='artist-credit', mapping_=mapping_)
+        if self.first_release_date is not None:
+            first_release_date_ = self.first_release_date
+            etree_.SubElement(element, '{http://musicbrainz.org/ns/mmd-2.0#}first-release-date').text = self.gds_format_string(first_release_date_)
         if self.release_list is not None:
             release_list_ = self.release_list
             release_list_.to_etree(element, name_='release-list', mapping_=mapping_)
@@ -4870,6 +4898,10 @@ class recording(GeneratedsSuper):
             obj_.build(child_)
             self.artist_credit = obj_
             obj_.original_tagname_ = 'artist-credit'
+        elif nodeName_ == 'first-release-date':
+            first_release_date_ = child_.text
+            first_release_date_ = self.gds_validate_string(first_release_date_, node, 'first_release_date')
+            self.first_release_date = first_release_date_
         elif nodeName_ == 'release-list':
             obj_ = release_list.factory(parent_object_=self)
             obj_.build(child_)
