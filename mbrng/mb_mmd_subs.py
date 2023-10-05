@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
 #
-# Generated Fri Dec 18 18:24:29 2020 by generateDS.py version 2.30.11.
-# Python 3.9.0 (default, Oct  7 2020, 23:09:01)  [GCC 10.2.0]
+# Generated Thu Oct  5 21:54:11 2023 by generateDS.py version 2.43.2.
+# Python 3.11.4 (main, Jun  9 2023, 07:59:55) [GCC 12.3.0]
 #
 # Command line options:
 #   ('-o', 'mbrng/models.py')
@@ -15,12 +15,13 @@
 #   musicbrainz_mmd.xsd
 #
 # Command line:
-#   /home/yvanzo/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
+#   /home/lucifer/mb-rngpy/venv/bin/generateDS.py -o "mbrng/models.py" -s "mbrng/mb_mmd_subs.py" --super="mb" --external-encoding="utf-8" --export="write etree" musicbrainz_mmd.xsd
 #
 # Current working directory (os.getcwd()):
 #   mb-rngpy
 #
 
+import os
 import sys
 from lxml import etree as etree_
 
@@ -31,32 +32,50 @@ def parsexml_(infile, parser=None, **kwargs):
         # Use the lxml ElementTree compatible parser so that, e.g.,
         #   we ignore comments.
         parser = etree_.ETCompatXMLParser()
+    try:
+        if isinstance(infile, os.PathLike):
+            infile = os.path.join(infile)
+    except AttributeError:
+        pass
     doc = etree_.parse(infile, parser=parser, **kwargs)
     return doc
+
+def parsexmlstring_(instring, parser=None, **kwargs):
+    if parser is None:
+        # Use the lxml ElementTree compatible parser so that, e.g.,
+        #   we ignore comments.
+        try:
+            parser = etree_.ETCompatXMLParser()
+        except AttributeError:
+            # fallback to xml.etree
+            parser = etree_.XMLParser()
+    element = etree_.fromstring(instring, parser=parser, **kwargs)
+    return element
 
 #
 # Globals
 #
 
 ExternalEncoding = 'utf-8'
+SaveElementTreeNode = True
 
 #
 # Data representation classes
 #
 
 
-class def_area_element_innerSub(supermod.def_area_element_inner):
+class def_area_element_inner1Sub(supermod.def_area_element_inner1):
     def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, disambiguation=None, iso_3166_1_code_list=None, iso_3166_2_code_list=None, iso_3166_3_code_list=None, annotation=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, anytypeobjs_=None, **kwargs_):
-        super(def_area_element_innerSub, self).__init__(id, type_, type_id, name, sort_name, disambiguation, iso_3166_1_code_list, iso_3166_2_code_list, iso_3166_3_code_list, annotation, life_span, alias_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, anytypeobjs_,  **kwargs_)
-supermod.def_area_element_inner.subclass = def_area_element_innerSub
-# end class def_area_element_innerSub
+        super(def_area_element_inner1Sub, self).__init__(id, type_, type_id, name, sort_name, disambiguation, iso_3166_1_code_list, iso_3166_2_code_list, iso_3166_3_code_list, annotation, life_span, alias_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, anytypeobjs_,  **kwargs_)
+supermod.def_area_element_inner1.subclass = def_area_element_inner1Sub
+# end class def_area_element_inner1Sub
 
 
-class def_track_dataSub(supermod.def_track_data):
+class def_track_data2Sub(supermod.def_track_data2):
     def __init__(self, id=None, position=None, number=None, title=None, length=None, artist_credit=None, recording=None, **kwargs_):
-        super(def_track_dataSub, self).__init__(id, position, number, title, length, artist_credit, recording,  **kwargs_)
-supermod.def_track_data.subclass = def_track_dataSub
-# end class def_track_dataSub
+        super(def_track_data2Sub, self).__init__(id, position, number, title, length, artist_credit, recording,  **kwargs_)
+supermod.def_track_data2.subclass = def_track_data2Sub
+# end class def_track_data2Sub
 
 
 class metadataSub(supermod.metadata):
@@ -162,6 +181,13 @@ class workSub(supermod.work):
         super(workSub, self).__init__(id, type_, type_id, title, language, language_list, artist_credit, iswc, iswc_list, attribute_list, annotation, disambiguation, alias_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, rating, user_rating, def_extension_element,  **kwargs_)
 supermod.work.subclass = workSub
 # end class workSub
+
+
+class def_area_element_innerSub(supermod.def_area_element_inner):
+    def __init__(self, id=None, type_=None, type_id=None, name=None, sort_name=None, disambiguation=None, iso_3166_1_code_list=None, iso_3166_2_code_list=None, iso_3166_3_code_list=None, annotation=None, life_span=None, alias_list=None, relation_list=None, tag_list=None, user_tag_list=None, genre_list=None, user_genre_list=None, anytypeobjs_=None, **kwargs_):
+        super(def_area_element_innerSub, self).__init__(id, type_, type_id, name, sort_name, disambiguation, iso_3166_1_code_list, iso_3166_2_code_list, iso_3166_3_code_list, annotation, life_span, alias_list, relation_list, tag_list, user_tag_list, genre_list, user_genre_list, anytypeobjs_,  **kwargs_)
+supermod.def_area_element_inner.subclass = def_area_element_innerSub
+# end class def_area_element_innerSub
 
 
 class placeSub(supermod.place):
@@ -316,6 +342,13 @@ class formatSub(supermod.format):
         super(formatSub, self).__init__(id, valueOf_, mixedclass_, content_,  **kwargs_)
 supermod.format.subclass = formatSub
 # end class formatSub
+
+
+class def_track_dataSub(supermod.def_track_data):
+    def __init__(self, id=None, position=None, number=None, title=None, length=None, artist_credit=None, recording=None, **kwargs_):
+        super(def_track_dataSub, self).__init__(id, position, number, title, length, artist_credit, recording,  **kwargs_)
+supermod.def_track_data.subclass = def_track_dataSub
+# end class def_track_dataSub
 
 
 class annotationSub(supermod.annotation):
@@ -654,6 +687,146 @@ supermod.iso_3166_3_code_list.subclass = iso_3166_3_code_listSub
 # end class iso_3166_3_code_listSub
 
 
+class def_iso_3166_1_code8Sub(supermod.def_iso_3166_1_code8):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_1_code8Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_1_code8.subclass = def_iso_3166_1_code8Sub
+# end class def_iso_3166_1_code8Sub
+
+
+class def_ipi4Sub(supermod.def_ipi4):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_ipi4Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_ipi4.subclass = def_ipi4Sub
+# end class def_ipi4Sub
+
+
+class def_incomplete_date3Sub(supermod.def_incomplete_date3):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_incomplete_date3Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_incomplete_date3.subclass = def_incomplete_date3Sub
+# end class def_incomplete_date3Sub
+
+
+class def_quality17Sub(supermod.def_quality17):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_quality17Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_quality17.subclass = def_quality17Sub
+# end class def_quality17Sub
+
+
+class def_iso_1592412Sub(supermod.def_iso_1592412):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_1592412Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_1592412.subclass = def_iso_1592412Sub
+# end class def_iso_1592412Sub
+
+
+class def_time7Sub(supermod.def_time7):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_time7Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_time7.subclass = def_time7Sub
+# end class def_time7Sub
+
+
+class def_direction16Sub(supermod.def_direction16):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_direction16Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_direction16.subclass = def_direction16Sub
+# end class def_direction16Sub
+
+
+class def_isni5Sub(supermod.def_isni5):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_isni5Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_isni5.subclass = def_isni5Sub
+# end class def_isni5Sub
+
+
+class def_iso_3166_2_code9Sub(supermod.def_iso_3166_2_code9):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_2_code9Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_2_code9.subclass = def_iso_3166_2_code9Sub
+# end class def_iso_3166_2_code9Sub
+
+
+class def_iso_3166_3_code10Sub(supermod.def_iso_3166_3_code10):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_3_code10Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_3_code10.subclass = def_iso_3166_3_code10Sub
+# end class def_iso_3166_3_code10Sub
+
+
+class def_iso_3166_1_codeSub(supermod.def_iso_3166_1_code):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_1_codeSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_1_code.subclass = def_iso_3166_1_codeSub
+# end class def_iso_3166_1_codeSub
+
+
+class def_ipiSub(supermod.def_ipi):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_ipiSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_ipi.subclass = def_ipiSub
+# end class def_ipiSub
+
+
+class def_incomplete_dateSub(supermod.def_incomplete_date):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_incomplete_dateSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_incomplete_date.subclass = def_incomplete_dateSub
+# end class def_incomplete_dateSub
+
+
+class def_qualitySub(supermod.def_quality):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_qualitySub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_quality.subclass = def_qualitySub
+# end class def_qualitySub
+
+
+class def_iso_15924Sub(supermod.def_iso_15924):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_15924Sub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_15924.subclass = def_iso_15924Sub
+# end class def_iso_15924Sub
+
+
+class def_timeSub(supermod.def_time):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_timeSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_time.subclass = def_timeSub
+# end class def_timeSub
+
+
+class def_directionSub(supermod.def_direction):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_directionSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_direction.subclass = def_directionSub
+# end class def_directionSub
+
+
+class def_isniSub(supermod.def_isni):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_isniSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_isni.subclass = def_isniSub
+# end class def_isniSub
+
+
+class def_iso_3166_2_codeSub(supermod.def_iso_3166_2_code):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_2_codeSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_2_code.subclass = def_iso_3166_2_codeSub
+# end class def_iso_3166_2_codeSub
+
+
+class def_iso_3166_3_codeSub(supermod.def_iso_3166_3_code):
+    def __init__(self, valueOf_=None, **kwargs_):
+        super(def_iso_3166_3_codeSub, self).__init__(valueOf_,  **kwargs_)
+supermod.def_iso_3166_3_code.subclass = def_iso_3166_3_codeSub
+# end class def_iso_3166_3_codeSub
+
+
 class attribute_listTypeSub(supermod.attribute_listType):
     def __init__(self, attribute=None, **kwargs_):
         super(attribute_listTypeSub, self).__init__(attribute,  **kwargs_)
@@ -675,18 +848,18 @@ supermod.life_spanType.subclass = life_spanTypeSub
 # end class life_spanTypeSub
 
 
-class attribute_listType1Sub(supermod.attribute_listType1):
+class attribute_listType18Sub(supermod.attribute_listType18):
     def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType1Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType1.subclass = attribute_listType1Sub
-# end class attribute_listType1Sub
+        super(attribute_listType18Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType18.subclass = attribute_listType18Sub
+# end class attribute_listType18Sub
 
 
-class attributeType2Sub(supermod.attributeType2):
+class attributeType19Sub(supermod.attributeType19):
     def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType2Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType2.subclass = attributeType2Sub
-# end class attributeType2Sub
+        super(attributeType19Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType19.subclass = attributeType19Sub
+# end class attributeType19Sub
 
 
 class track_listTypeSub(supermod.track_listType):
@@ -696,18 +869,18 @@ supermod.track_listType.subclass = track_listTypeSub
 # end class track_listTypeSub
 
 
-class track_listType3Sub(supermod.track_listType3):
+class track_listType20Sub(supermod.track_listType20):
     def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType3Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType3.subclass = track_listType3Sub
-# end class track_listType3Sub
+        super(track_listType20Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType20.subclass = track_listType20Sub
+# end class track_listType20Sub
 
 
-class track_listType4Sub(supermod.track_listType4):
+class track_listType22Sub(supermod.track_listType22):
     def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType4Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType4.subclass = track_listType4Sub
-# end class track_listType4Sub
+        super(track_listType22Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType22.subclass = track_listType22Sub
+# end class track_listType22Sub
 
 
 class trackTypeSub(supermod.trackType):
@@ -724,158 +897,25 @@ supermod.languageType.subclass = languageTypeSub
 # end class languageTypeSub
 
 
-class track_listType5Sub(supermod.track_listType5):
+class track_listType24Sub(supermod.track_listType24):
     def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType5Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType5.subclass = track_listType5Sub
-# end class track_listType5Sub
+        super(track_listType24Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType24.subclass = track_listType24Sub
+# end class track_listType24Sub
 
 
-class track_listType6Sub(supermod.track_listType6):
+class track_listType25Sub(supermod.track_listType25):
     def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType6Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType6.subclass = track_listType6Sub
-# end class track_listType6Sub
+        super(track_listType25Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType25.subclass = track_listType25Sub
+# end class track_listType25Sub
 
 
-class trackType7Sub(supermod.trackType7):
+class trackType26Sub(supermod.trackType26):
     def __init__(self, title=None, artist=None, length=None, **kwargs_):
-        super(trackType7Sub, self).__init__(title, artist, length,  **kwargs_)
-supermod.trackType7.subclass = trackType7Sub
-# end class trackType7Sub
-
-
-class attribute_listType8Sub(supermod.attribute_listType8):
-    def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType8Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType8.subclass = attribute_listType8Sub
-# end class attribute_listType8Sub
-
-
-class attributeType9Sub(supermod.attributeType9):
-    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType9Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType9.subclass = attributeType9Sub
-# end class attributeType9Sub
-
-
-class attribute_listType10Sub(supermod.attribute_listType10):
-    def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType10Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType10.subclass = attribute_listType10Sub
-# end class attribute_listType10Sub
-
-
-class attributeType11Sub(supermod.attributeType11):
-    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType11Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType11.subclass = attributeType11Sub
-# end class attributeType11Sub
-
-
-class attribute_listType12Sub(supermod.attribute_listType12):
-    def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType12Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType12.subclass = attribute_listType12Sub
-# end class attribute_listType12Sub
-
-
-class attributeType13Sub(supermod.attributeType13):
-    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType13Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType13.subclass = attributeType13Sub
-# end class attributeType13Sub
-
-
-class life_spanType14Sub(supermod.life_spanType14):
-    def __init__(self, begin=None, end=None, **kwargs_):
-        super(life_spanType14Sub, self).__init__(begin, end,  **kwargs_)
-supermod.life_spanType14.subclass = life_spanType14Sub
-# end class life_spanType14Sub
-
-
-class attribute_listType15Sub(supermod.attribute_listType15):
-    def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType15Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType15.subclass = attribute_listType15Sub
-# end class attribute_listType15Sub
-
-
-class attributeType16Sub(supermod.attributeType16):
-    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType16Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType16.subclass = attributeType16Sub
-# end class attributeType16Sub
-
-
-class track_listType17Sub(supermod.track_listType17):
-    def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType17Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType17.subclass = track_listType17Sub
-# end class track_listType17Sub
-
-
-class track_listType18Sub(supermod.track_listType18):
-    def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType18Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType18.subclass = track_listType18Sub
-# end class track_listType18Sub
-
-
-class track_listType19Sub(supermod.track_listType19):
-    def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType19Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType19.subclass = track_listType19Sub
-# end class track_listType19Sub
-
-
-class trackType20Sub(supermod.trackType20):
-    def __init__(self, title=None, artist=None, length=None, **kwargs_):
-        super(trackType20Sub, self).__init__(title, artist, length,  **kwargs_)
-supermod.trackType20.subclass = trackType20Sub
-# end class trackType20Sub
-
-
-class languageType21Sub(supermod.languageType21):
-    def __init__(self, fluency=None, valueOf_=None, **kwargs_):
-        super(languageType21Sub, self).__init__(fluency, valueOf_,  **kwargs_)
-supermod.languageType21.subclass = languageType21Sub
-# end class languageType21Sub
-
-
-class track_listType22Sub(supermod.track_listType22):
-    def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType22Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType22.subclass = track_listType22Sub
-# end class track_listType22Sub
-
-
-class track_listType23Sub(supermod.track_listType23):
-    def __init__(self, count=None, offset=None, track=None, **kwargs_):
-        super(track_listType23Sub, self).__init__(count, offset, track,  **kwargs_)
-supermod.track_listType23.subclass = track_listType23Sub
-# end class track_listType23Sub
-
-
-class trackType24Sub(supermod.trackType24):
-    def __init__(self, title=None, artist=None, length=None, **kwargs_):
-        super(trackType24Sub, self).__init__(title, artist, length,  **kwargs_)
-supermod.trackType24.subclass = trackType24Sub
-# end class trackType24Sub
-
-
-class attribute_listType25Sub(supermod.attribute_listType25):
-    def __init__(self, attribute=None, **kwargs_):
-        super(attribute_listType25Sub, self).__init__(attribute,  **kwargs_)
-supermod.attribute_listType25.subclass = attribute_listType25Sub
-# end class attribute_listType25Sub
-
-
-class attributeType26Sub(supermod.attributeType26):
-    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType26Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
-supermod.attributeType26.subclass = attributeType26Sub
-# end class attributeType26Sub
+        super(trackType26Sub, self).__init__(title, artist, length,  **kwargs_)
+supermod.trackType26.subclass = trackType26Sub
+# end class trackType26Sub
 
 
 class attribute_listType27Sub(supermod.attribute_listType27):
@@ -886,10 +926,143 @@ supermod.attribute_listType27.subclass = attribute_listType27Sub
 
 
 class attributeType28Sub(supermod.attributeType28):
-    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
-        super(attributeType28Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
+    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType28Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
 supermod.attributeType28.subclass = attributeType28Sub
 # end class attributeType28Sub
+
+
+class attribute_listType29Sub(supermod.attribute_listType29):
+    def __init__(self, attribute=None, **kwargs_):
+        super(attribute_listType29Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType29.subclass = attribute_listType29Sub
+# end class attribute_listType29Sub
+
+
+class attributeType30Sub(supermod.attributeType30):
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType30Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType30.subclass = attributeType30Sub
+# end class attributeType30Sub
+
+
+class attribute_listType31Sub(supermod.attribute_listType31):
+    def __init__(self, attribute=None, **kwargs_):
+        super(attribute_listType31Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType31.subclass = attribute_listType31Sub
+# end class attribute_listType31Sub
+
+
+class attributeType32Sub(supermod.attributeType32):
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType32Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType32.subclass = attributeType32Sub
+# end class attributeType32Sub
+
+
+class life_spanType33Sub(supermod.life_spanType33):
+    def __init__(self, begin=None, end=None, **kwargs_):
+        super(life_spanType33Sub, self).__init__(begin, end,  **kwargs_)
+supermod.life_spanType33.subclass = life_spanType33Sub
+# end class life_spanType33Sub
+
+
+class attribute_listType35Sub(supermod.attribute_listType35):
+    def __init__(self, attribute=None, **kwargs_):
+        super(attribute_listType35Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType35.subclass = attribute_listType35Sub
+# end class attribute_listType35Sub
+
+
+class attributeType36Sub(supermod.attributeType36):
+    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType36Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType36.subclass = attributeType36Sub
+# end class attributeType36Sub
+
+
+class track_listType37Sub(supermod.track_listType37):
+    def __init__(self, count=None, offset=None, track=None, **kwargs_):
+        super(track_listType37Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType37.subclass = track_listType37Sub
+# end class track_listType37Sub
+
+
+class track_listType38Sub(supermod.track_listType38):
+    def __init__(self, count=None, offset=None, track=None, **kwargs_):
+        super(track_listType38Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType38.subclass = track_listType38Sub
+# end class track_listType38Sub
+
+
+class track_listType40Sub(supermod.track_listType40):
+    def __init__(self, count=None, offset=None, track=None, **kwargs_):
+        super(track_listType40Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType40.subclass = track_listType40Sub
+# end class track_listType40Sub
+
+
+class trackType42Sub(supermod.trackType42):
+    def __init__(self, title=None, artist=None, length=None, **kwargs_):
+        super(trackType42Sub, self).__init__(title, artist, length,  **kwargs_)
+supermod.trackType42.subclass = trackType42Sub
+# end class trackType42Sub
+
+
+class languageType43Sub(supermod.languageType43):
+    def __init__(self, fluency=None, valueOf_=None, **kwargs_):
+        super(languageType43Sub, self).__init__(fluency, valueOf_,  **kwargs_)
+supermod.languageType43.subclass = languageType43Sub
+# end class languageType43Sub
+
+
+class track_listType45Sub(supermod.track_listType45):
+    def __init__(self, count=None, offset=None, track=None, **kwargs_):
+        super(track_listType45Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType45.subclass = track_listType45Sub
+# end class track_listType45Sub
+
+
+class track_listType46Sub(supermod.track_listType46):
+    def __init__(self, count=None, offset=None, track=None, **kwargs_):
+        super(track_listType46Sub, self).__init__(count, offset, track,  **kwargs_)
+supermod.track_listType46.subclass = track_listType46Sub
+# end class track_listType46Sub
+
+
+class trackType47Sub(supermod.trackType47):
+    def __init__(self, title=None, artist=None, length=None, **kwargs_):
+        super(trackType47Sub, self).__init__(title, artist, length,  **kwargs_)
+supermod.trackType47.subclass = trackType47Sub
+# end class trackType47Sub
+
+
+class attribute_listType48Sub(supermod.attribute_listType48):
+    def __init__(self, attribute=None, **kwargs_):
+        super(attribute_listType48Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType48.subclass = attribute_listType48Sub
+# end class attribute_listType48Sub
+
+
+class attributeType49Sub(supermod.attributeType49):
+    def __init__(self, type_id=None, value=None, credited_as=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType49Sub, self).__init__(type_id, value, credited_as, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType49.subclass = attributeType49Sub
+# end class attributeType49Sub
+
+
+class attribute_listType50Sub(supermod.attribute_listType50):
+    def __init__(self, attribute=None, **kwargs_):
+        super(attribute_listType50Sub, self).__init__(attribute,  **kwargs_)
+supermod.attribute_listType50.subclass = attribute_listType50Sub
+# end class attribute_listType50Sub
+
+
+class attributeType51Sub(supermod.attributeType51):
+    def __init__(self, type_=None, type_id=None, value_id=None, valueOf_=None, mixedclass_=None, content_=None, **kwargs_):
+        super(attributeType51Sub, self).__init__(type_, type_id, value_id, valueOf_, mixedclass_, content_,  **kwargs_)
+supermod.attributeType51.subclass = attributeType51Sub
+# end class attributeType51Sub
 
 
 def get_root_tag(node):
@@ -907,12 +1080,14 @@ def parse(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'def_area_element_inner'
-        rootClass = supermod.def_area_element_inner
+        rootTag = 'def_area_element_inner1'
+        rootClass = supermod.def_area_element_inner1
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
-    doc = None
+    if not SaveElementTreeNode:
+        doc = None
+        rootNode = None
     if not silence:
         sys.stdout.write('<?xml version="1.0" ?>\n')
         rootObj.export(
@@ -928,15 +1103,17 @@ def parseEtree(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'def_area_element_inner'
-        rootClass = supermod.def_area_element_inner
+        rootTag = 'def_area_element_inner1'
+        rootClass = supermod.def_area_element_inner1
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
-    # Enable Python to collect the space used by the DOM.
-    doc = None
     mapping = {}
     rootElement = rootObj.to_etree(None, name_=rootTag, mapping_=mapping)
     reverse_mapping = rootObj.gds_reverse_node_mapping(mapping)
+    # Enable Python to collect the space used by the DOM.
+    if not SaveElementTreeNode:
+        doc = None
+        rootNode = None
     if not silence:
         content = etree_.tostring(
             rootElement, pretty_print=True,
@@ -952,16 +1129,16 @@ def parseString(inString, silence=False):
     else:
         from io import BytesIO as StringIO
     parser = None
-    doc = parsexml_(StringIO(inString), parser)
-    rootNode = doc.getroot()
+    rootNode= parsexmlstring_(inString, parser)
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'def_area_element_inner'
-        rootClass = supermod.def_area_element_inner
+        rootTag = 'def_area_element_inner1'
+        rootClass = supermod.def_area_element_inner1
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
-    doc = None
+    if not SaveElementTreeNode:
+        rootNode = None
     if not silence:
         sys.stdout.write('<?xml version="1.0" ?>\n')
         rootObj.export(
@@ -976,12 +1153,14 @@ def parseLiteral(inFilename, silence=False):
     rootNode = doc.getroot()
     rootTag, rootClass = get_root_tag(rootNode)
     if rootClass is None:
-        rootTag = 'def_area_element_inner'
-        rootClass = supermod.def_area_element_inner
+        rootTag = 'def_area_element_inner1'
+        rootClass = supermod.def_area_element_inner1
     rootObj = rootClass.factory()
     rootObj.build(rootNode)
     # Enable Python to collect the space used by the DOM.
-    doc = None
+    if not SaveElementTreeNode:
+        doc = None
+        rootNode = None
     if not silence:
         sys.stdout.write('#from mb import *\n\n')
         sys.stdout.write('import mb as model_\n\n')
