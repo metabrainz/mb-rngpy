@@ -97,7 +97,7 @@ python -m pytest
 echo Creating git tag
 
 minor=`echo "$mmd_schema_version" \
-  | sed 's/^v-\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)/\1\2\3/'`
+  | sed 's/^v-\([0-9]\{1,\}\)-\([0-9]\{1,\}\)-\([0-9]\{1,\}\)/\1\2\3/'`
 version="2.${minor}."`git tag --list "v-2.${minor}.*" | wc -l`
 tag="v-$version"
 git tag -u CE33CF04 "$tag" \
