@@ -102,7 +102,6 @@ version="2.${minor}."`git tag --list "v-2.${minor}.*" | wc -l`
 tag="v-$version"
 git tag -u CE33CF04 "$tag" \
   -m "Regenerated upon MMD schema 2.0 $mmd_schema_version with $python_version."
-python setup.py version
 
 ################################################################################
 echo Pushing git commits and tag
@@ -115,7 +114,8 @@ echo Building and pushing Python package distribution
 
 set -x
 
-python setup.py sdist
+python -m pip install build
+python -m build
 gpg -u CE33CF04 --detach-sign -a dist/mb-rngpy-${version}.tar.gz
 twine upload \
   --config-file ~/.pypirc \

@@ -1,2 +1,2 @@
-lxml==4.9.3
-generateDS==2.43.2
+lxml==5.3.1
+generateDS==2.44.3
