@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ==================================================================
-  $Id: dab77021ba8a60624b94299b4c89b2f25932ec1a $
+  $Id: b64a047e85d0628c4d0b2b8f2bfa814c12550df4 $
   
   Relax NG Schema for MusicBrainz XML Metadata Version 2.0
   
@@ -419,7 +419,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
-        <xs:element minOccurs="0" ref="mmd-2.0:ordering-attribute"/>
         <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
         <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
         <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
@@ -435,7 +434,6 @@
       <xs:attributeGroup ref="mmd-2.0:def_series-attribute_extension"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ordering-attribute" type="xs:string"/>
   <xs:element name="event">
     <xs:complexType>
       <xs:sequence>
@@ -526,6 +524,7 @@
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="mmd-2.0:name-credit"/>
       </xs:sequence>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="name-credit">
@@ -625,6 +624,9 @@
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
         <xs:element minOccurs="0" ref="mmd-2.0:disambiguation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:annotation"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:alias-list"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="mmd-2.0:relation-list"/>
       </xs:sequence>
       <xs:attribute name="count" type="xs:nonNegativeInteger"/>
       <xs:attribute name="id" use="required" type="mmd-2.0:def_uuid"/>
@@ -671,6 +673,7 @@
         <xs:group ref="mmd-2.0:def_track-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:data-track-list"/>
       </xs:sequence>
+      <xs:attribute name="id" type="mmd-2.0:def_uuid"/>
     </xs:complexType>
   </xs:element>
   <xs:element name="position" type="xs:nonNegativeInteger"/>
@@ -776,10 +779,12 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="mmd-2.0:name"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:description"/>
         <xs:element minOccurs="0" name="editor" type="xs:string"/>
         <xs:element minOccurs="0" ref="mmd-2.0:area-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:artist-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:event-list"/>
+        <xs:element minOccurs="0" ref="mmd-2.0:genre-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:instrument-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:label-list"/>
         <xs:element minOccurs="0" ref="mmd-2.0:place-list"/>
