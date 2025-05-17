@@ -15,9 +15,13 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "lxml==5.4.0",
+    "lxml>=5.4.0",
 ]
 dynamic = ["version"]
+
+[dependency-groups]
+dev = ["lxml>=5.4.0", "generateDS==2.44.3"]
+test = ["pytest"]
 
 [project.urls]
 Homepage = "https://github.com/metabrainz/mb-rngpy"
