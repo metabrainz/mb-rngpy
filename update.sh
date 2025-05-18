@@ -5,42 +5,6 @@ set -e -u
 MB_RNGPY_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$MB_RNGPY_ROOT"
 
-usage="Usage: $0 [<python command>]"
-
-if [ $# -gt 1 ]
-then
-  echo Error: Too many arguments
-  echo $usage
-  exit 64
-fi
-
-if [ $# -eq 1 ]
-then
-  python_command=$1
-  if ! type $python_command &>/dev/null
-  then
-    echo Error: $python_command command not found
-    echo $usage
-    exit 69
-  fi
-else
-  if type python3 &>/dev/null
-  then
-    python_command=python3
-  else
-    echo Error: python3 command not found , please install python3 or create a virtual env with python3
-    echo $usage
-    exit 69
-  fi
-fi
-
-if [[ ! `$python_command --version` =~ "Python 3." ]]
-then
-  echo Error: $python_command is not Python 3.x
-  echo $usage
-  exit 69
-fi
-
 if ! type trang &>/dev/null
 then
   echo Error: trang command not found
@@ -49,23 +13,11 @@ then
 fi
 
 ################################################################################
-echo Setting virtual environment up
-
-virtualenv -p $python_command venv
-unset python_command
-set +u
-source venv/bin/activate
-set -u
-pip install -U pip
-pip install --group dev
-python_version=`python --version`
-
-################################################################################
 echo Updating the schema
 
 cd mmd-schema
 git pull origin production
-mmd_schema_version=`git describe --tags --dirty --always`
+mmd_schema_version=$(git describe --tags --dirty --always)
 cd ..
 if git diff --name-only | grep -qx mmd-schema
 then
@@ -88,10 +40,7 @@ pip install --group test
 pytest
 
 ################################################################################
-echo Pushing git commits
-
-git push origin master
-
+echo Please review the newly created commits before pushing them.
 echo Done
 
 deactivate
