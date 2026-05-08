@@ -5,7 +5,7 @@ authors = [
 ]
 description = "Python bindings for the MusicBrainz XML Metadata RELAX NG schema"
 readme = "README.md"
-requires-python = ">=3"
+requires-python = ">=3.11"
 license = "MIT"
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -15,9 +15,15 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "lxml==6.1.0",
+    "lxml>=6.1.0",
+    # generateDS-emitted mbrng/models.py imports `six.moves.zip_longest`
+    "six",
 ]
 dynamic = ["version"]
+
+[dependency-groups]
+dev = ["lxml>=6.1.0", "generateDS==2.44.3"]
+test = ["pytest"]
 
 [project.urls]
 Homepage = "https://github.com/metabrainz/mb-rngpy"

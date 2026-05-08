@@ -34,28 +34,18 @@ Report issues at https://tickets.metabrainz.org/secure/CreateIssue!default.jspa?
 Please install the following programs:
 
 * [Trang](https://github.com/relaxng/jing-trang/releases)
-* [Twine](https://twine.readthedocs.io/) to upload to PyPI
-* [Virtualenv](https://virtualenv.pypa.io/) to create a virtual environment
 
 If you are on Ubuntu/Debian you can install these via:
 ```bash
-sudo apt-get install trang twine python-virtualenv
+sudo apt-get install trang
 ```
 
-Make sure you have:
-* Git credentials for remote `origin`
-* GPG private signing key `CE33CF04`
-* PyPI credentials in `~/.pypirc`
+Also, note that your pip version should be >= 25.1.0.
 
 ### Updating and pushing to Git and PyPI
 
-Finall run
-```bash
-./update.sh
-```
-
-It will create a virtual environment with the packages lxml and
-[generateDS](http://www.davekuhlman.org/generateDS.html), update the
-schema, regenerate the files, test, commit and tag changes with Git,
-push commits and tags with Git, build Python package and push it to
-PyPI.
+1. Setup a virtual environment and install dependencies by running `pip install --group dev --group test`.
+2. Run `./update.sh` to update schema and regenerate models.
+3. Review the generated commits and either open a PR with the changes or push them to master.
+4. Create a new GitHub release using the correct tag format. Tags should follow the pattern `2.{MMD_SCHEMA_VERSION}.{PATCH}`, 
+   where `PATCH` is incremented by 1 from the previous patch version. When the `MMD_SCHEMA_VERSION` is updated, the PATCH number should be reset to 0.
