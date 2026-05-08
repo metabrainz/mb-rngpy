@@ -16,6 +16,8 @@ classifiers = [
 ]
 dependencies = [
     "lxml>=6.1.0",
+    # generateDS-emitted mbrng/models.py imports `six.moves.zip_longest`
+    "six",
 ]
 dynamic = ["version"]
 
